@@ -1,0 +1,7 @@
+<div>
+	<button [routerLink]="['/admin/specialties/create']">Create</button>
+	<div *ngFor="let specialty of specialties">
+		<span [routerLink]="['/admin/specialties/edit', specialty.id]">{{specialty.name}}</span>
+		<button (click)="onDelete(specialty.id)">Delete</button>
+	</div>
+</div>

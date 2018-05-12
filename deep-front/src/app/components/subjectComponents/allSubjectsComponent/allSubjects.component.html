@@ -1,0 +1,7 @@
+<div *ngFor="let subject of subjects">
+	<span [routerLink]="['edit', subject.id]">
+		<span>{{subject.id}} </span>
+		<span> {{subject.name}}</span>
+	</span>
+	<button (click)="onDelete(subject.id)">Delete</button>
+</div>

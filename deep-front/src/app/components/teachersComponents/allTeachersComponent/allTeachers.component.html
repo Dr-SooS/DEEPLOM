@@ -1,0 +1,9 @@
+<button [routerLink]="['/admin/teachers/create']">Create</button>
+<div *ngFor="let teacher of teachers">
+	<span [routerLink]="['edit', teacher.id]">
+		<span>{{teacher.id}} </span>
+		<span> {{teacher.user.firstName}}</span>
+		<span>{{teacher.user.lastName}}</span>
+	</span>
+	<button (click)="onDelete(teacher.id)">Delete</button>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="row">
+		<div id="main-menu" class="col-md-3">
+			<div [routerLink]="['colleges']">Colleges</div>
+			<div [routerLink]="['directors']">Directors</div>
+		</div>
+
+		<div class="col-md-9">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

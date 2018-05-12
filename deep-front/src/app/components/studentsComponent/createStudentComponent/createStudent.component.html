@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="student.user.firstName">
+<input type="text" [(ngModel)]="student.user.lastName">
+<input type="text" [(ngModel)]="student.user.username">
+<input type="password" [(ngModel)]="student.user.password">
+<select [(ngModel)]="student.subGroup">
+	<option *ngFor="let c of subGroups" [ngValue]="c">{{c.name}}</option>
+</select>
+<button (click)="onStudentCreate()">Send</button>

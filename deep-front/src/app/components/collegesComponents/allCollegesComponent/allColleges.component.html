@@ -1,0 +1,11 @@
+<div>
+	<button [routerLink]="['/admin/colleges/create']">Create</button>
+	<div *ngFor="let college of colleges">
+		<span [routerLink]="['edit', college.id]">
+			<span>{{college.id}} </span>
+			<span>{{college.name}}</span>
+			<span>{{college.directorName}}</span>
+		</span>
+		<button (click)="onDelete(college.id)">Delete</button>
+	</div>
+</div>

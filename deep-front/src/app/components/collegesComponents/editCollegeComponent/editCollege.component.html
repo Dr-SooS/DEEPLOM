@@ -1,0 +1,6 @@
+<div>
+	<button [routerLink]="['/admin/teachers']" [queryParams]="{collegeId: college.id}">Teachers</button>
+	<input type="text" [(ngModel)]="college.name">
+	<button (click)="onUpdate()">Send</button>
+	<all-specialties [collegeId]="college.id"></all-specialties>
+</div>

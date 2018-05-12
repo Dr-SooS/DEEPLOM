@@ -1,0 +1,6 @@
+<input type="text" [(ngModel)]="subGroup.name">
+<select [(ngModel)]="subGroup.group">
+	<option [ngValue]="subGroup.group">{{subGroup.group.number}}</option>
+	<option *ngFor="let c of groups" [ngValue]="c">{{c.number}}</option>
+</select>
+<button (click)="onCreate()">Send</button>

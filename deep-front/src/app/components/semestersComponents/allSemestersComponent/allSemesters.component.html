@@ -1,0 +1,10 @@
+<div *ngFor="let semester of semesters">
+	<span [routerLink]="['edit', semester.id]">
+		<span>{{semester.id}} </span>
+		<span> {{semester.number}}</span>
+		<span>{{semester.startDate}}</span>
+		<span>{{semester.endDate}}</span>
+		<span>{{semester.subGroup.name}}</span>
+	</span>
+	<button (click)="onDelete(semester.id)">Delete</button>
+</div>

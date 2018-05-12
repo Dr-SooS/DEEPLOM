@@ -1,0 +1,10 @@
+<div>
+	<input type="text" [(ngModel)]="director.user.firstName">
+	<input type="text" [(ngModel)]="director.user.lastName">
+	<input type="text" [(ngModel)]="director.user.username">
+	<input type="password" [(ngModel)]="director.user.password">
+	<select [(ngModel)]="director.college">
+		<option *ngFor="let c of colleges" [ngValue]="c">{{c.name}}</option>
+	</select>
+	<button (click)="onDirectorCreate()">Send</button>
+</div>

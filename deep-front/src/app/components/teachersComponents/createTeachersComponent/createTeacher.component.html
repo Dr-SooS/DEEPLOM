@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="teacher.user.firstName">
+<input type="text" [(ngModel)]="teacher.user.lastName">
+<input type="text" [(ngModel)]="teacher.user.username">
+<input type="password" [(ngModel)]="teacher.user.password">
+<select [(ngModel)]="teacher.college">
+	<option *ngFor="let c of colleges" [ngValue]="c">{{c.name}}</option>
+</select>
+<button (click)="onTeacherCreate()">Send</button>

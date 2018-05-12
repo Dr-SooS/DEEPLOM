@@ -1,0 +1,9 @@
+<div *ngFor="let director of directors">
+	<span [routerLink]="['edit', director.id]">
+		<span>{{director.id}} </span>
+		<span> {{director.user.firstName}}</span>
+		<span>{{director.user.lastName}}</span>
+		<span>{{director.college.name}}</span>
+	</span>
+	<button (click)="onDelete(director.id)">Delete</button>
+</div>

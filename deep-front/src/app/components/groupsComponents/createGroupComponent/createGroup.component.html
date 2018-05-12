@@ -1,0 +1,8 @@
+<div>
+	<input type="text" [(ngModel)]="group.number">
+	<select [(ngModel)]="group.specialty">
+		<option [ngValue]="group.specialty">{{group.specialty.name}}</option>
+		<option *ngFor="let c of specialties" [ngValue]="c">{{c.name}}</option>
+	</select>
+	<button (click)="onCreate()">Send</button>
+</div>

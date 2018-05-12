@@ -1,0 +1,7 @@
+<div *ngFor="let topic of topics">
+	<span [routerLink]="['edit', topic.id]">
+		<span>{{topic.id}} </span>
+		<span> {{topic.name}}</span>
+	</span>
+	<button (click)="onDelete(topic.id)">Delete</button>
+</div>

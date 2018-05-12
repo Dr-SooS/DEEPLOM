@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="semester.number">
+<input type="date" [(ngModel)]="semester.startDate">
+<input type="date" [(ngModel)]="semester.endDate">
+<select [(ngModel)]="semester.subGroup">
+	<option [ngValue]="semester.subGroup">{{semester.subGroup.name}}</option>
+	<option *ngFor="let c of subGroups" [ngValue]="c">{{c.name}}</option>
+</select>
+<button (click)="onCreate()">Send</button>
