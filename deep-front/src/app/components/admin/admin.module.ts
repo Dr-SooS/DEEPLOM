@@ -5,12 +5,17 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
+
 @NgModule({
 	bootstrap: [AdminComponent],
 	declarations: [
 		AdminComponent,
 	],
 	imports: [
+		MatButtonModule,
+		MatToolbarModule,
 		CommonModule,
 		HttpClientModule,
 		FormsModule,
