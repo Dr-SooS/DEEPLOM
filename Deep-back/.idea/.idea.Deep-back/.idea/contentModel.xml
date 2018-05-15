@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Deep-back.-1542977327.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Deep-back" t="IncludeRecursive">
+        <e p="Controllers" t="Include">
+          <e p="AccountsController.cs" t="Include" />
+          <e p="CollegeGroupsController.cs" t="Include" />
+          <e p="CollegesController.cs" t="Include" />
+          <e p="DirectorsController.cs" t="Include" />
+          <e p="LessonsController.cs" t="Include" />
+          <e p="MarksController.cs" t="Include" />
+          <e p="SeederController.cs" t="Include" />
+          <e p="SemestersController.cs" t="Include" />
+          <e p="SpecialtiesController.cs" t="Include" />
+          <e p="StudentsController.cs" t="Include" />
+          <e p="SubGroupsController.cs" t="Include" />
+          <e p="SubjectsController.cs" t="Include" />
+          <e p="TeachersController.cs" t="Include" />
+          <e p="TopicsController.cs" t="Include" />
+          <e p="UsersController.cs" t="Include" />
+        </e>
+        <e p="Deep-back.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20180514091217_init.Designer.cs" t="Include" />
+          <e p="20180514091217_init.cs" t="Include" />
+          <e p="CollegeDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="College.cs" t="Include" />
+          <e p="CollegeDbContext.cs" t="Include" />
+          <e p="CollegeGroup.cs" t="Include" />
+          <e p="DTO" t="Include">
+            <e p="CollegeDTO.cs" t="Include" />
+            <e p="CollegeGroupDTO.cs" t="Include" />
+            <e p="DirectorDTO.cs" t="Include" />
+            <e p="LessonDTO.cs" t="Include" />
+            <e p="MarkDTO.cs" t="Include" />
+            <e p="SemesterDTO.cs" t="Include" />
+            <e p="SpecialtyDTO.cs" t="Include" />
+            <e p="StudentDTO.cs" t="Include" />
+            <e p="SubGroupDTO.cs" t="Include" />
+            <e p="SubjectDTO.cs" t="Include" />
+            <e p="TeacherDTO.cs" t="Include" />
+            <e p="TopicDTO.cs" t="Include" />
+            <e p="UserDTO.cs" t="Include" />
+          </e>
+          <e p="Director.cs" t="Include" />
+          <e p="Lesson.cs" t="Include" />
+          <e p="Mark.cs" t="Include" />
+          <e p="Semester.cs" t="Include" />
+          <e p="Specialty.cs" t="Include" />
+          <e p="Student.cs" t="Include" />
+          <e p="SubGroup.cs" t="Include" />
+          <e p="Subject.cs" t="Include" />
+          <e p="Teacher.cs" t="Include" />
+          <e p="TeacherSubjectInfo.cs" t="Include" />
+          <e p="Topic.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Startup.cs" t="Include" />
+        <e p="Utils" t="Include">
+          <e p="DtoBuilder.cs" t="Include" />
+          <e p="UserCreator.cs" t="Include" />
+        </e>
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Deep-back.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="wwwroot" t="Include" />
+      </e>
+      <e p="Deep-back.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

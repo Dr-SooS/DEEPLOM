@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Создать группу</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Название подгруппы" [(ngModel)]="data.name">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Группа" [(ngModel)]="data.group">
+      <mat-option *ngFor="let g of groups" [value]="g">
+        {{ g.number }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="data">Подтвердить</button>
+</mat-dialog-actions>

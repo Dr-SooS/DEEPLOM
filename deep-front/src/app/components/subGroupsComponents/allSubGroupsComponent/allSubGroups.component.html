@@ -1,0 +1,22 @@
+<button mat-icon-button (click)="openDialog()" color="primary">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-accordion class="component-root">
+  <mat-expansion-panel *ngFor="let subGroup of subGroups">
+    <mat-expansion-panel-header>
+      <button mat-icon-button (click)="onDelete(subGroup.id)" color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['../../../subGroups/edit', subGroup.id]" color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <mat-panel-title>
+        <span>{{subGroup.name}}</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <all-students [sbId]="subGroup.id"></all-students>
+
+  </mat-expansion-panel>
+</mat-accordion>
+

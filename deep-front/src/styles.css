@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0;
+}
+
+.table {
+    min-width: 80%;
+    max-height: 500px;
+    margin: auto;
+}
+
+.component-root {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.login-form {
+  margin: 200px auto auto;
+  max-width: 20%;
+}

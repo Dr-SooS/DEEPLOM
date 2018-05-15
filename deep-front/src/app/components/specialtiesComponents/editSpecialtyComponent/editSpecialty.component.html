@@ -1,8 +1,20 @@
-<div>
-	<input type="text" [(ngModel)]="specialty.name">
-	<select [(ngModel)]="specialty.college">
-		<option *ngFor="let c of colleges" [ngValue]="c">{{c.name}}</option>
-	</select>
-	<button (click)="onUpdate()">Send</button>
-	<all-groups [specialtyId]="specialty.id"></all-groups>
+<div class="component-root">
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Название специальности" [(ngModel)]="specialty.name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Колледж" [(ngModel)]="specialty.college">
+        <mat-option *ngFor="let college of colleges" [value]="college">
+          {{ college.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button (click)="onUpdate()" color="primary">
+      <mat-icon>done</mat-icon>
+    </button>
+  </mat-card>
+
+  <all-groups [specialtyId]="specialty.id"></all-groups>
 </div>

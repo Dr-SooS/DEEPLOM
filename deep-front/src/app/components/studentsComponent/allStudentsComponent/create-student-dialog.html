@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Создать группу</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Фамилия" [(ngModel)]="data.student.user.lastName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Имя" [(ngModel)]="data.student.user.firstName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Login" [(ngModel)]="data.student.user.username">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Пароль" [(ngModel)]="data.student.user.password">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Подгруппа" [(ngModel)]="data.student.subGroup">
+      <mat-option *ngFor="let g of subGroups" [value]="g">
+        {{ g.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="data">Подтвердить</button>
+</mat-dialog-actions>

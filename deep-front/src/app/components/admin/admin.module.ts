@@ -4,9 +4,7 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatToolbarModule} from '@angular/material';
+import { MaterialModule } from "../../material.module";
 
 @NgModule({
 	bootstrap: [AdminComponent],
@@ -14,8 +12,7 @@ import {MatButtonModule, MatToolbarModule} from '@angular/material';
 		AdminComponent,
 	],
 	imports: [
-		MatButtonModule,
-		MatToolbarModule,
+		MaterialModule,
 		CommonModule,
 		HttpClientModule,
 		FormsModule,

@@ -1,0 +1,33 @@
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5 table" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+      <td mat-cell *matCellDef="let student"> {{student.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ФИО</th>
+      <td mat-cell *matCellDef="let student"> {{student.user.firstName + ' ' + student.user.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="studentDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="openDialog()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let student">
+        <button mat-icon-button (click)="onDelete(student.id)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['../../../students/edit', student.id]" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'studentDelete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'studentDelete']"></tr>
+  </table>
+</div>
+

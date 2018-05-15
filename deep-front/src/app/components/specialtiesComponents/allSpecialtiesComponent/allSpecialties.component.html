@@ -1,0 +1,33 @@
+<div class="component-root">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5 table" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+      <td mat-cell *matCellDef="let specialty"> {{specialty.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Название</th>
+      <td mat-cell *matCellDef="let specialty"> {{specialty.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="specialtyDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="openDialog()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let specialty">
+        <button mat-icon-button (click)="onDelete(specialty.id)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['../../../specialties/edit', specialty.id]" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'specialtyDelete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'specialtyDelete']"></tr>
+  </table>
+</div>
+

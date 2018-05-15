@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+
+<table border="1">
+  <tr>
+    <td></td>
+    <td *ngFor="let date of dates">{{date.toDateString()}}</td>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.user.lastName}}</td>
+    <td *ngFor="let date of dates">{{getMark(student.id, date)}}</td>
+  </tr>
+</table>
+
+<!--<router-outlet></router-outlet>-->

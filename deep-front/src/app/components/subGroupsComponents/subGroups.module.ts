@@ -8,12 +8,9 @@ import {GroupsService} from "../../services/groups.service";
 import {SubGroupsService} from "../../services/subGroups.service";
 import {StudentsService} from "../../services/students.service";
 import {EditSubGroupComponent} from "./editSubGroupComponent/editSubGroup.component";
-import {CreateSubGroupComponent} from "./createSubGroupComponent/createSubGroup.component";
-
 @NgModule({
 	declarations: [
-		EditSubGroupComponent,
-		CreateSubGroupComponent
+		EditSubGroupComponent
 	],
 	imports: [
 		CommonModule,
@@ -21,7 +18,6 @@ import {CreateSubGroupComponent} from "./createSubGroupComponent/createSubGroup.
 		FormsModule,
 		RouterModule.forChild([
 			{path: 'edit/:id', component: EditSubGroupComponent},
-			{path: 'create', component: CreateSubGroupComponent}
 		])
 	],
 	providers: [

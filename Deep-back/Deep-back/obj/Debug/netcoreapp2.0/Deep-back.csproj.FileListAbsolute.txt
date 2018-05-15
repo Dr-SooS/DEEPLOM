@@ -1,0 +1,10 @@
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/bin/Debug/netcoreapp2.0/Deep-back.deps.json
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/bin/Debug/netcoreapp2.0/Deep-back.runtimeconfig.json
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/bin/Debug/netcoreapp2.0/Deep-back.runtimeconfig.dev.json
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/bin/Debug/netcoreapp2.0/Deep-back.dll
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/bin/Debug/netcoreapp2.0/Deep-back.pdb
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/obj/Debug/netcoreapp2.0/Deep-back.csproj.CoreCompileInputs.cache
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/obj/Debug/netcoreapp2.0/Deep-back.AssemblyInfoInputs.cache
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/obj/Debug/netcoreapp2.0/Deep-back.AssemblyInfo.cs
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/obj/Debug/netcoreapp2.0/Deep-back.dll
+/home/vdobritski/DEEPLOM/Deep-back/Deep-back/obj/Debug/netcoreapp2.0/Deep-back.pdb

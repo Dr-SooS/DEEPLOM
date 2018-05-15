@@ -1,12 +1,9 @@
 <div>
 	<div>
-		<mat-toolbar color='primary'>DEEEEEEEEEPLOM</mat-toolbar>
-		<div id="main-menu">
-			<div [routerLink]="['colleges']">Colleges</div>
-			<div [routerLink]="['directors']">Directors</div>
-		</div>
-
-		<button mat-button>Click me!</button>
+		<mat-toolbar class="mat-elevation-z5" color='primary'>
+				<button mat-button [routerLink]="['colleges']">Колледжи</button>
+				<button mat-button [routerLink]="['directors']">Директора</button>
+		</mat-toolbar>
 
 		<div class="col-md-9">
 			<router-outlet></router-outlet>

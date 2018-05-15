@@ -1,8 +1,0 @@
-<div>
-	<button [routerLink]="['/admin/subGroups/create']">Create</button>
-	<div *ngFor="let sb of subGroups">
-		<span [routerLink]="['/admin/subgroups/edit', sb.id]">{{sb.name}}</span>
-		<button (click)="onDelete(sb.id)">Delete</button>
-		<all-students [sbId]="sb.id"></all-students>
-	</div>
-</div>
