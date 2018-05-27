@@ -48,7 +48,7 @@ export class AllGroupsComponent {
       data: {name: this.newGroup.number, college: this.newGroup.specialty}
     });
 
-    dialogRef.afterClosed().pipe(filter(res => res !== "")).subscribe(result => {
+    dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {
       this.newGroup = result;
       this.groupsService.postGroup(this.newGroup).subscribe(result => {
         this.groupsService.getSpecilatyGroups(this.specialtyId).subscribe(res => {

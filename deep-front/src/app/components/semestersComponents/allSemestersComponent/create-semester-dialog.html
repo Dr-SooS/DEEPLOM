@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Создать группу</h2>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-select placeholder="Подгруппа" [(ngModel)]="data.semester.subGroup">
+      <mat-option *ngFor="let s of subGroups" [value]="s">
+        {{ s.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Номер" [(ngModel)]="data.semester.number">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [matDatepicker]="startPicker" placeholder="Начало" [(ngModel)]="data.semester.startDate">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [matDatepicker]="endPicker" placeholder="Конец" [(ngModel)]="data.semester.endDate">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button (click)="close()">Подтвердить</button>
+</mat-dialog-actions>

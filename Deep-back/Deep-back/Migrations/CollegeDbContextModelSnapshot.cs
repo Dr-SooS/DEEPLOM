@@ -68,8 +68,7 @@ namespace Deepback.Migrations
                     b.HasIndex("CollegeId")
                         .IsUnique();
 
-                    b.HasIndex("UserID")
-                        .IsUnique();
+                    b.HasIndex("UserID");
 
                     b.ToTable("Directors");
                 });
@@ -83,7 +82,7 @@ namespace Deepback.Migrations
 
                     b.Property<int>("TeacherSubjectInfoId");
 
-                    b.Property<int>("TopicId");
+                    b.Property<int?>("TopicId");
 
                     b.HasKey("ID");
 
@@ -107,7 +106,7 @@ namespace Deepback.Migrations
 
                     b.Property<int>("StudentId");
 
-                    b.Property<int>("Value");
+                    b.Property<int?>("Value");
 
                     b.HasKey("ID");
 
@@ -129,7 +128,7 @@ namespace Deepback.Migrations
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<int?>("SubGroupId");
+                    b.Property<int>("SubGroupId");
 
                     b.HasKey("ID");
 
@@ -269,6 +268,8 @@ namespace Deepback.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int?>("CollegeID");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -307,6 +308,8 @@ namespace Deepback.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollegeID");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -444,8 +447,8 @@ namespace Deepback.Migrations
                         .HasForeignKey("DEEPLOM.Models.Director", "CollegeId");
 
                     b.HasOne("DEEPLOM.Models.User", "User")
-                        .WithOne("Director")
-                        .HasForeignKey("DEEPLOM.Models.Director", "UserID")
+                        .WithMany("Directors")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -458,8 +461,7 @@ namespace Deepback.Migrations
 
                     b.HasOne("DEEPLOM.Models.Topic", "Topic")
                         .WithMany("Lessons")
-                        .HasForeignKey("TopicId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TopicId");
                 });
 
             modelBuilder.Entity("DEEPLOM.Models.Mark", b =>
@@ -479,7 +481,8 @@ namespace Deepback.Migrations
                 {
                     b.HasOne("DEEPLOM.Models.SubGroup", "SubGroup")
                         .WithMany()
-                        .HasForeignKey("SubGroupId");
+                        .HasForeignKey("SubGroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DEEPLOM.Models.Specialty", b =>
@@ -498,7 +501,7 @@ namespace Deepback.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DEEPLOM.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -522,12 +525,12 @@ namespace Deepback.Migrations
             modelBuilder.Entity("DEEPLOM.Models.Teacher", b =>
                 {
                     b.HasOne("DEEPLOM.Models.College", "College")
-                        .WithMany("Teachers")
+                        .WithMany()
                         .HasForeignKey("CollegeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DEEPLOM.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Teachers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -553,9 +556,16 @@ namespace Deepback.Migrations
             modelBuilder.Entity("DEEPLOM.Models.Topic", b =>
                 {
                     b.HasOne("DEEPLOM.Models.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("Topics")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DEEPLOM.Models.User", b =>
+                {
+                    b.HasOne("DEEPLOM.Models.College")
+                        .WithMany("Users")
+                        .HasForeignKey("CollegeID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

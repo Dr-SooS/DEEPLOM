@@ -1,9 +1,32 @@
-<button [routerLink]="['/admin/teachers/create']">Create</button>
-<div *ngFor="let teacher of teachers">
-	<span [routerLink]="['edit', teacher.id]">
-		<span>{{teacher.id}} </span>
-		<span> {{teacher.user.firstName}}</span>
-		<span>{{teacher.user.lastName}}</span>
-	</span>
-	<button (click)="onDelete(teacher.id)">Delete</button>
+<div class="component-root">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5 table" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+      <td mat-cell *matCellDef="let teacher"> {{teacher.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ФИО</th>
+      <td mat-cell *matCellDef="let teacher"> {{teacher.user.firstName + ' ' + teacher.user.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="openDialog()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let teacher">
+        <button mat-icon-button (click)="onDelete(teacher.id)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['edit', teacher.id]" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'teacherDelete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'teacherDelete']"></tr>
+  </table>
 </div>

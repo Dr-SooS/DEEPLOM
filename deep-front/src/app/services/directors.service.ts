@@ -17,7 +17,7 @@ export class DirectorsService extends BaseService{
 	getDirectors(): Observable<Director[]> {
 		return this.http.get<Director[]>(this.host.host + "/api/Directors");
 	}
-	
+
 	getDirector(id: number): Observable<Director> {
 		return this.http.get<Director>(this.host.host + "/api/Directors/" + id);
 	}
@@ -29,8 +29,12 @@ export class DirectorsService extends BaseService{
 	putDirector(id: number,  director: Director) {
 		return this.http.put(this.host.host + "/api/Directors/" + id, director);
 	}
-	
+
 	deleteDirector(id: number) {
 		return this.http.delete(this.host.host + "/api/Directors/" + id);
 	}
+
+  getDirectorByUser(id: number) {
+    return this.http.get<Director>(this.host.host + "/api/Directors/user/" + id);
+  }
 }

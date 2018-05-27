@@ -1,0 +1,37 @@
+<div class="component-root">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5 table" matSort>
+    <ng-container matColumnDef="group">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Подгруппа</th>
+      <td mat-cell *matCellDef="let tsi"> {{tsi.semester.subGroup.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дисциплина</th>
+      <td mat-cell *matCellDef="let tsi"> {{tsi.subject.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="semester">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Семестр №</th>
+      <td mat-cell *matCellDef="let tsi"> {{tsi.semester.number}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tsiDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="openDialog()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let tsi">
+        <button mat-icon-button (click)="onDelete(tsi.id)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['group', 'subject', 'semester', 'tsiDelete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['group', 'subject', 'semester', 'tsiDelete']"></tr>
+  </table>
+</div>

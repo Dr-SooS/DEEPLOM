@@ -3,9 +3,10 @@
 		<mat-toolbar class="mat-elevation-z5" color='primary'>
 				<button mat-button [routerLink]="['colleges']">Колледжи</button>
 				<button mat-button [routerLink]="['directors']">Директора</button>
+        <button mat-button [routerLink]="['marks']">Оценки</button>
 		</mat-toolbar>
 
-		<div class="col-md-9">
+		<div>
 			<router-outlet></router-outlet>
 		</div>
 	</div>

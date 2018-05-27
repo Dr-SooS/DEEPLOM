@@ -9,9 +9,10 @@ namespace DEEPLOM.Models
 		public int ID { get; set; }
 		public string Name { get; set; }
 		
-		public Director Director { get; set; }
 		public virtual List<Specialty> Specialties { get; set; }
 		public virtual List<Subject> Subjects { get; set; }
-		public virtual List<Teacher> Teachers { get; set; }
+		public Director Director { get; set; } 
+		
+		public virtual List<User> Users { get; set; }
 	}
 }

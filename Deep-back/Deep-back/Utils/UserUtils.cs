@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DEEPLOM.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace DEEPLOM.Utils
 {
-	public static class UserCreator
+	public static class UserUtils
 	{
 		public static async Task<User> CreateUser(UserManager<User> _userManager, string email, string password, string role)
 		{
@@ -18,6 +19,12 @@ namespace DEEPLOM.Utils
 			}
 
 			throw new Exception("user creation error");
+		}
+
+		public static async Task<User> GetUserAsync(UserManager<User> userManager, ClaimsPrincipal user)
+		{
+			var resuser = await userManager.FindByNameAsync(user.FindFirst(ClaimsIdentity.DefaultNameClaimType).Value);
+			return resuser;
 		}
 	}
 }

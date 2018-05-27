@@ -11,6 +11,8 @@ import {StudentsService} from "../../services/students.service";
 import {AllSubGroupsComponent, CreateSubGroupDialog} from '../subGroupsComponents/allSubGroupsComponent/allSubGroups.component';
 import {AllStudentsComponent, CreateStudentDialog} from '../studentsComponent/allStudentsComponent/allStudents.component';
 import {MaterialModule} from '../../material.module';
+import {AllSemestersComponent, CreateSemesterDialog} from '../semestersComponents/allSemestersComponent/allSemesters.component';
+import {SemestersService} from '../../services/semesters.service ';
 
 
 @NgModule({
@@ -19,9 +21,11 @@ import {MaterialModule} from '../../material.module';
 	  CreateSubGroupDialog,
 		AllStudentsComponent,
 		AllSubGroupsComponent,
-		EditGroupComponent
+		EditGroupComponent,
+    AllSemestersComponent,
+    CreateSemesterDialog
 	],
-  entryComponents: [CreateSubGroupDialog, CreateStudentDialog],
+  entryComponents: [CreateSubGroupDialog, CreateStudentDialog, CreateSemesterDialog],
 	imports: [
 	  MaterialModule,
 		CommonModule,
@@ -35,7 +39,8 @@ import {MaterialModule} from '../../material.module';
 		SpecialtiesService,
 		GroupsService,
 		SubGroupsService,
-		StudentsService
+		StudentsService,
+    SemestersService
 	]
 })
 

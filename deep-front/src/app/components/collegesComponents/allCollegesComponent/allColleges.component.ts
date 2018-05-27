@@ -48,7 +48,7 @@ export class AllCollegesComponent {
       data: {name: this.newCollege.name}
     });
 
-    dialogRef.afterClosed().pipe(filter(res => res !== "")).subscribe(result => {
+    dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {
       this.newCollege = result;
       this.collegesService.postCollege(this.newCollege).subscribe(result => {
         this.collegesService.getColleges().subscribe(res => {

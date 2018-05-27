@@ -61,6 +61,29 @@ namespace DEEPLOM.Controllers
 			               .Where(g => g.Group.ID == id)
 			               .ToList();
 		}
+		
+		[HttpGet("college/{id}")]
+		public IEnumerable<SubGroupDTO> GetCollegeSubGroups([FromRoute] int id)
+		{
+			return _context.SubGroups
+			               .Include(s => s.Group)
+			               .ThenInclude(s => s.Specialty)
+			               .Include(s => s.Students)
+			               .ThenInclude(s => s.User)
+			               .Where(g => g.Group.Specialty.CollegeId == id)
+			               .Select(g => new SubGroupDTO()
+			               {
+				               ID   = g.ID,
+				               Name = g.Name,
+				               Group = new CollegeGroupDTO()
+				               {
+					               ID     = g.GroupId,
+					               Number = g.Group.Number
+				               },
+
+			               })
+			               .ToList();
+		}
 
 		// GET: api/SubGroups/5
 		[HttpGet("{id}")]

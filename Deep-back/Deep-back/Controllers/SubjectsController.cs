@@ -31,6 +31,34 @@ namespace DEEPLOM.Controllers
 			return subjects;
 		}
 
+		[HttpGet("teacher_group")]
+		public IEnumerable<SubjectDTO> GetTeacherGroupSubjects(int teacherId, int groupId)
+		{
+			return _context.TeacherSubjectInfos
+			               .Include(ts => ts.Teacher)
+			               .Include(ts => ts.Semester)
+			               .Where(ts => ts.Semester.SubGroupId == groupId && ts.TeacherId == teacherId)
+			               .Select(ts => new SubjectDTO()
+			               {
+				               ID   = ts.SubjectId,
+				               Name = ts.Subject.Name
+			               })
+			               .ToList();
+		}
+		
+		[HttpGet("college/{id}")]
+		public IEnumerable<SubjectDTO> GetCollegeSubjects([FromRoute] int id)
+		{
+			return _context.Subjects
+			               .Where(s => s.CollegeId == id)
+			               .Select(s => new SubjectDTO()
+			               {
+				               ID   = s.ID,
+				               Name = s.Name
+			               })
+			               .ToList();
+		}
+
 		// GET: api/Subjects/5
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetSubject([FromRoute] int id)

@@ -1,0 +1,58 @@
+<div class="component-root">
+
+  <mat-card>
+    <mat-card-title>Группа</mat-card-title>
+
+    <mat-form-field>
+      <mat-select placeholder="Подгруппа" [(ngModel)]="selectedSubGroup" (ngModelChange)="changeSelectedSubGroup()" [compareWith]="compareFn">
+        <mat-option *ngFor="let sb of subGroups" [value]="sb" >
+          {{ sb.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [disabled]="!selectedSubGroup" placeholder="Преподаватель" [(ngModel)]="selectedTeacher" (ngModelChange)="changeSelectedTeacher()" [compareWith]="compareFn">
+        <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+          {{ teacher.user.firstName + " " + teacher.user.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [disabled]="!selectedTeacher" placeholder="Предмет" [(ngModel)]="selectedSubject" (ngModelChange)="changeSelectedSubject()" [compareWith]="compareFn">
+        <mat-option *ngFor="let subject of subjects" [value]="subject">
+          {{ subject.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [disabled]="!selectedSubject" placeholder="Семестр" [(ngModel)]="selectedSemester" (ngModelChange)="changeSelectedSemester()" [compareWith]="compareFn">
+        <mat-option *ngFor="let s of semesters" [value]="s">
+          {{ s.number }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
+
+  <div class="zui-wrapper">
+    <div class="zui-scroller">
+      <table class="zui-table">
+        <tbody>
+        <tr>
+          <td class="zui-sticky-col"></td>
+          <td *ngFor="let date of dates">{{date.toDateString()}}</td>
+        </tr>
+        <tr *ngFor="let student of students">
+          <th class="zui-sticky-col">{{student.user.lastName}}</th>
+          <td *ngFor="let date of dates">
+            <input type="text" [ngModel]="getMarkText(findMark(student.id, date))"
+                   (blur)="updateMark($event, findMark(student.id, date), date)">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

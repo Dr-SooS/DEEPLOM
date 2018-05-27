@@ -83,6 +83,37 @@ namespace DEEPLOM.Controllers
 
 			return Ok(director);
 		}
+		
+		[HttpGet("user/{id}")]
+		public async Task<IActionResult> GetDirectorByUser([FromRoute] string id)
+		{
+			var director = await _context.Directors
+			                             .Include(d => d.User)
+			                             .Include(d => d.College)
+			                             .Select(d => new DirectorDTO()
+			                             {
+				                             ID = d.ID,
+				                             College = d.College != null ? new CollegeDTO()
+				                             {
+					                             ID   = d.College.ID,
+					                             Name = d.College.Name
+				                             } : null,
+				                             User = new UserDTO()
+				                             {
+					                             FirstName = d.User.FirstName,
+					                             LastName  = d.User.LastName,
+					                             Id        = d.User.Id,
+					                             Username  = d.User.UserName
+				                             }
+			                             }).FirstOrDefaultAsync(m => m.User.Id == id);
+
+			if (director == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(director);
+		}
 
 		// PUT: api/Directors/5
 		[HttpPut("{id}")]
@@ -124,7 +155,7 @@ namespace DEEPLOM.Controllers
 		[HttpPost]
 		public async Task<IActionResult> PostDirector([FromBody] DirectorDTO directorDto)
 		{
-			var user = await UserCreator.CreateUser(_userManager, directorDto.User.Username, directorDto.User.Password, "Director");
+			var user = await UserUtils.CreateUser(_userManager, directorDto.User.Username, directorDto.User.Password, "Director");
 			user.FirstName = directorDto.User.FirstName;
 			user.LastName = directorDto.User.LastName;
 			user.UserName = directorDto.User.Username;

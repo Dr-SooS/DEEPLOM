@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DEEPLOM.Models;
+using DEEPLOM.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace DEEPLOM.Controllers
@@ -48,33 +50,65 @@ namespace DEEPLOM.Controllers
 			
 			try
 			{
-				await CreateUser("admin@gmail.com", "_Wsda1234", "Admin");
-				var director = await CreateUser("director@gmail.com", "_Wsda1234", "Director");
+				var college = _context.Colleges.Add(new College {Name = "МРК"}).Entity;
+				
+				await UserUtils.CreateUser(_userManager, "admin@gmail.com", "_Wsda1234", "Admin");
+				var director = await UserUtils.CreateUser(_userManager, "director@gmail.com", "_Wsda1234", "Director");
 				director.FirstName = "Сергей";
 				director.LastName = "Анкуда";
 				
-				var curator = await CreateUser("curator@gmail.com", "_Wsda1234", "Curator");
+				var curator = await UserUtils.CreateUser(_userManager, "curator@gmail.com", "_Wsda1234", "Curator");
 				curator.FirstName = "Елена";
 				curator.LastName = "Клемято";
 				
-				var teacher = await CreateUser("teacher@gmail.com", "_Wsda1234", "Teacher");
+				var teacher = await UserUtils.CreateUser(_userManager, "teacher@gmail.com", "_Wsda1234", "Teacher");
 				teacher.FirstName = "Марина";
 				teacher.LastName = "Бельчик";
 				
-				var student = await CreateUser("student@gmail.com", "_Wsda1234", "Student");
+				var student = await UserUtils.CreateUser(_userManager, "student@gmail.com", "_Wsda1234", "Student");
 				student.FirstName = "Владислав";
 				student.LastName = "Добрицкий";
 				
-				var college = _context.Colleges.Add(new College {ID = 1, Name = "МРК"}).Entity;
 				var specialty = _context.Specialties.Add(new Specialty() {College = college, Name = "ПОИТ"}).Entity;
 				var group = _context.CollegeGroups.Add(new CollegeGroup() {Number = "42491", Specialty = specialty}).Entity;
 				var subGroup = _context.SubGroups.Add(new SubGroup() {Name = "42491sub1", Group = group}).Entity;
 
-				_context.Directors.Add(new Director() {User = director, College = college});
-				_context.Students.Add(new Student() {User = student, SubGroup = subGroup});
-				_context.Teachers.Add(new Teacher() {User = teacher, College = college});
+				_context.Directors.Add(new Director() {User = director});
+				var s =_context.Students.Add(new Student() {User = student, SubGroup = subGroup}).Entity;
+				var t = _context.Teachers.Add(new Teacher() {User = teacher, College = college}).Entity;
 				_context.Teachers.Add(new Teacher() {User = curator, College = college});
+
+				var semester = _context.Semesters.Add(new Semester()
+				{
+					Number    = 1,
+					StartDate = new DateTime(2017, 06, 01),
+					EndDate   = new DateTime(2017, 08, 01),
+					SubGroup  = subGroup
+				}).Entity;
+				var subject = _context.Subjects.Add(new Subject() {Name = "Subject", College = college}).Entity;
+				var topic = _context.Topics.Add(new Topic() {Name = "Topic", Subject = subject}).Entity;
+
+				await _context.SaveChangesAsync();
 				
+				await new TeacheSubjectInfoController(_context).CreateTsi(new TsiDto()
+				{
+					Semester = new SemesterDTO() {ID = semester.ID},
+					Subject  = new SubjectDTO() {ID = subject.ID},
+					Teacher  = new TeacherDTO() {ID = t.ID}
+				});
+
+				var lesson1 = await _context.Lessons.FirstOrDefaultAsync(l => l.Date == new DateTime(2017, 06, 05));
+				var lesson2 = await _context.Lessons.FirstOrDefaultAsync(l => l.Date == new DateTime(2017, 06, 06));
+				var lesson3 = await _context.Lessons.FirstOrDefaultAsync(l => l.Date == new DateTime(2017, 06, 20));
+				var lesson4 = await _context.Lessons.FirstOrDefaultAsync(l => l.Date == new DateTime(2017, 06, 21));
+				var lesson5 = await _context.Lessons.FirstOrDefaultAsync(l => l.Date == new DateTime(2017, 07, 05));
+				
+				var mark1 = _context.Marks.Add(new Mark() {IsAbsent = false, IsCredited = false, Lesson = lesson1, Student = s, Value = 9}).Entity;
+				var mark2 = _context.Marks.Add(new Mark() {IsAbsent = false, IsCredited = false, Lesson = lesson2, Student = s, Value = 9}).Entity;
+				var mark3 = _context.Marks.Add(new Mark() {IsAbsent = false, IsCredited = false, Lesson = lesson3, Student = s, Value = 9}).Entity;
+				var mark4 = _context.Marks.Add(new Mark() {IsAbsent = false, IsCredited = false, Lesson = lesson4, Student = s, Value = 9}).Entity;
+				var mark5 = _context.Marks.Add(new Mark() {IsAbsent = false, IsCredited = false, Lesson = lesson5, Student = s, Value = 9}).Entity;
+
 			}
 			catch
 			{
@@ -84,19 +118,6 @@ namespace DEEPLOM.Controllers
 			await _context.SaveChangesAsync();
 
 			return Ok("Seeding Success");
-		}
-
-		public async Task<User> CreateUser(string email, string password, string role)
-		{
-			var user   = new User() {Email = email, UserName = email};
-			var result = await _userManager.CreateAsync(user, password);
-			if (result.Succeeded)
-			{
-				await _userManager.AddToRoleAsync(user, role);
-				return user;
-			}
-
-			throw new Exception("user creation error");
 		}
 	}
 }

@@ -35,6 +35,63 @@ namespace DEEPLOM.Controllers
 				semesters.Add(DtoBuilder.BuildDto(semester));
 			return semesters;
 		}
+		
+		[HttpGet("teacher_group_subject")]
+		public IEnumerable<SemesterDTO> GetTeacherGroupSubjectSemesters(int teacherId, int groupId, int subjectId)
+		{
+			var t = _context.TeacherSubjectInfos
+			               .Include(ts => ts.Teacher)
+			               .Include(ts => ts.Semester)
+			               .Where(ts => ts.Semester.SubGroupId == groupId && ts.TeacherId == teacherId && ts.SubjectId == subjectId)
+			               .Select(ts => new SemesterDTO()
+			               {
+				               ID   = ts.SemesterId,
+				               Number = ts.Semester.Number,
+				               StartDate = ts.Semester.StartDate.ToString("yyyy-MM-dd"),
+				               EndDate = ts.Semester.EndDate.ToString("yyyy-MM-dd"),
+			               })
+			               .ToList();
+			return t;
+		}
+		
+		[HttpGet("subGr/{id}")]
+		public IEnumerable<SemesterDTO> GetSubGrSemesters([FromRoute] int id)
+		{
+			var t = _context.Semesters
+			                .Include(s => s.SubGroup)
+			                .Where(s => s.SubGroupId == id)
+			                .Select(s => new SemesterDTO()
+			                {
+				                ID        = s.ID,
+				                Number    = s.Number,
+				                StartDate = s.StartDate.ToString("yyyy-MM-dd"),
+				                EndDate   = s.EndDate.ToString("yyyy-MM-dd"),
+			                })
+			                .ToList();
+			return t;
+		}
+		
+		[HttpGet("Gr/{id}")]
+		public IEnumerable<SemesterDTO> GetGroupSemesters([FromRoute] int id)
+		{
+			var t = _context.Semesters
+			                .Include(s => s.SubGroup)
+			                .Where(s => s.SubGroup.GroupId == id)
+			                .Select(s => new SemesterDTO()
+			                {
+				                ID        = s.ID,
+				                Number    = s.Number,
+				                StartDate = s.StartDate.ToString("yyyy-MM-dd"),
+				                EndDate   = s.EndDate.ToString("yyyy-MM-dd"),
+				                SubGroup = new SubGroupDTO()
+				                {
+					                ID = s.SubGroupId,
+					                Name = s.SubGroup.Name
+				                }
+			                })
+			                .ToList();
+			return t;
+		}
 
 		// GET: api/Semesters/5
 		[HttpGet("{id}")]
@@ -108,6 +165,7 @@ namespace DEEPLOM.Controllers
 				SubGroupId = semesterDto.SubGroup.ID
 			};
 			_context.Semesters.Add(semester);
+			
 			try
 			{
 				await _context.SaveChangesAsync();

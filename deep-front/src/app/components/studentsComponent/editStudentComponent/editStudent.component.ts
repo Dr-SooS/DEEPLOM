@@ -25,17 +25,17 @@ export class EditStudentComponent{
 		private studentsService: StudentsService,
 		private subGroupsService: SubGroupsService
 	) {}
-	
+
 
 	ngOnInit() {
 		this.student.user = new User();
 		this.student.subGroup = new SubGroup();
-		
+
 		this.router.params.subscribe(p => this.id = +p['id']);
 		this.studentsService.getStudent(this.id).subscribe(res => this.student = res as Student);
 		this.subGroupsService.getSubGroups().subscribe(res => this.subGroups = res as SubGroup[])
 	}
-	
+
 	onStudentUpdate() {
 		this.studentsService.putStudent(this.id, this.student).subscribe();
 	}

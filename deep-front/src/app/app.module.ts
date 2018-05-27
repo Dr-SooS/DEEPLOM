@@ -15,6 +15,8 @@ import {AdminGuard} from './routeProtectors/admin.guard';
 import {LoginComponent} from './components/accountsComponents/loginComponent/login.component';
 import {CookieService} from 'angular2-cookie/core';
 import {StudentsService} from './services/students.service';
+import {DirectorGuard} from './routeProtectors/director.guard';
+import {UsersService} from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,17 @@ import {StudentsService} from './services/students.service';
       {path: '', component: AppComponent},
       {path: 'accounts/login', component: LoginComponent},
       {path: 'admin', loadChildren: './components/admin/admin.module#AdminModule', canActivate: [AdminGuard]},
+      {path: 'director', loadChildren: './components/director/director.module#DirectorModule', canActivate: [DirectorGuard]},
     ])
   ],
   providers: [
     StudentsService,
     AdminGuard,
+    DirectorGuard,
     PermissionsService,
     CookieService,
     HostService,
+    UsersService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]

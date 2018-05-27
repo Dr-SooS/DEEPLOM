@@ -7,7 +7,7 @@ namespace DEEPLOM.Models
 	public class LessonDTO
 	{
 		public int ID { get; set; }
-		public DateTime Date { get; set; }
-		public Topic Topic { get; set; }
+		public string Date { get; set; }
+		public TopicDTO Topic { get; set; }
 	}
 }

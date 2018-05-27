@@ -23,16 +23,16 @@ export class EditTeacherComponent{
 		private router: ActivatedRoute,
 		private teachersService: TeachersService
 	) {}
-	
+
 
 	ngOnInit() {
 		this.teacher.user = new User();
-		
+
 		this.router.params.subscribe(p => this.id = +p['id']);
 		this.teachersService.getTeacher(this.id).subscribe(res => this.teacher = res as Teacher);
 	}
-	
-	onTeacherUpdate() {
+
+	onUpdate() {
 		this.teachersService.putTeacher(this.id, this.teacher).subscribe();
 	}
 }

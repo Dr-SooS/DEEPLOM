@@ -1,5 +1,5 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatToolbarModule, MatIconModule, MatTableModule, MatSortModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatCardModule, MatSelectModule, MatExpansionModule} from '@angular/material';
+import {MatButtonModule, MatToolbarModule, MatIconModule, MatTableModule, MatSortModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatCardModule, MatSelectModule, MatExpansionModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 
 @NgModule({
@@ -15,6 +15,8 @@ import {NgModule} from '@angular/core';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatExpansionModule,
@@ -27,7 +29,9 @@ import {NgModule} from '@angular/core';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {

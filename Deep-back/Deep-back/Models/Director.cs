@@ -8,11 +8,11 @@ namespace DEEPLOM.Models
 	{
 		public int ID { get; set; }
 
+		public int? CollegeId { get; set; }
+		public College College { get; set; }
+		
 		[Required]
 		public string UserID { get; set; }
 		public User User { get; set; }
-
-		public int?    CollegeId { get; set; }
-		public College College   { get; set; }
 	}
 }

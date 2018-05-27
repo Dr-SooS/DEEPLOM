@@ -6,5 +6,6 @@ namespace DEEPLOM.Models
 	{
 		public int ID { get; set; }
 		public string Name { get; set; }
+		public CollegeDTO College { get; set; }
 	}
 }

@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Создать преподавателя</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Фамилия" [(ngModel)]="data.teacher.user.lastName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Имя" [(ngModel)]="data.teacher.user.firstName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Login" [(ngModel)]="data.teacher.user.username">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Пароль" [(ngModel)]="data.teacher.user.password">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="data">Подтвердить</button>
+</mat-dialog-actions>

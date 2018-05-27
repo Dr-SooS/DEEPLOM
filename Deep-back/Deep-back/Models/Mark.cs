@@ -3,7 +3,7 @@
 	public class Mark
 	{
 		public int ID { get; set; }
-		public int Value { get; set; }
+		public int? Value { get; set; }
 		public bool IsAbsent { get; set; }
 		public bool IsCredited { get; set; }
 		

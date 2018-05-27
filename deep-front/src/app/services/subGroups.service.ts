@@ -36,4 +36,8 @@ export class SubGroupsService extends BaseService{
 	deleteSubGroup(id: number) {
 		return this.http.delete(this.host.host + "/api/SubGroups/" + id);
 	}
+
+  getCollegeSubGroups(id: number) {
+    return this.http.get<SubGroup[]>(this.host.host + "/api/SubGroups/college/" + id);
+  }
 }

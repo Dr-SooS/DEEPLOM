@@ -15,10 +15,11 @@ import {MaterialModule} from '../../material.module';
 @NgModule({
   declarations: [
     CreateCollegeDialog,
+    CreateSpecialtyDialog,
     AllSpecialtiesComponent,
     AllCollegesComponent,
     EditCollegeComponent],
-  entryComponents: [CreateCollegeDialog],
+  entryComponents: [CreateCollegeDialog, CreateSpecialtyDialog],
   imports: [
     MaterialModule,
     CommonModule,

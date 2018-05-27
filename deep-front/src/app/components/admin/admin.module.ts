@@ -7,7 +7,6 @@ import {RouterModule} from "@angular/router";
 import { MaterialModule } from "../../material.module";
 
 @NgModule({
-	bootstrap: [AdminComponent],
 	declarations: [
 		AdminComponent,
 	],
@@ -25,7 +24,8 @@ import { MaterialModule } from "../../material.module";
 					{path: 'groups', loadChildren: '../groupsComponents/groups.module#GroupsModule'},
 					{path: 'subGroups', loadChildren: '../subGroupsComponents/subGroups.module#SubGroupsModule'},
 					{path: 'students', loadChildren: '../studentsComponent/students.module#StudentsModule'},
-					{path: 'teachers', loadChildren: '../teachersComponents/teachers.module#TeachersModule'}
+					{path: 'teachers', loadChildren: '../teachersComponents/teachers.module#TeachersModule'},
+          {path: 'marks', loadChildren: '../marksComponents/marks.module#MarksModule'}
 				]
 			},
 		])

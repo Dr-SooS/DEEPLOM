@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Назначить преподавателя</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-select placeholder="Подгруппа" [(ngModel)]="selectedSb" (ngModelChange)="changeSelectedSubGroup()" [compareWith]="compareFn">
+      <mat-option *ngFor="let sb of sbs" [value]="sb">
+        {{ sb.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select [disabled]="!selectedSb" placeholder="Семестр" [(ngModel)]="selectedSemester" [compareWith]="compareFn">
+      <mat-option *ngFor="let s of semesters" [value]="s">
+        {{ s.number }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Дисциплина" [(ngModel)]="selectedSubject" [compareWith]="compareFn">
+      <mat-option *ngFor="let s of subjects" [value]="s">
+        {{ s.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Отмена</button>
+  <button mat-button [disabled]="!selectedSubject" (click)="close()">Подтвердить</button>
+</mat-dialog-actions>

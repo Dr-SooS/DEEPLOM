@@ -28,6 +28,7 @@ export class AllSpecialtiesComponent {
               private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
     this.specialtiesService.getCollegeSpecialties(this.collegeId).subscribe(res => {
       this.dataSource.data = res as Specialty[];
     });
@@ -49,7 +50,7 @@ export class AllSpecialtiesComponent {
       data: {name: this.newSpecialty.name, college: this.newSpecialty.college}
     });
 
-    dialogRef.afterClosed().pipe(filter(res => res !== "")).subscribe(result => {
+    dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {
       this.newSpecialty = result;
       this.specialtiesService.postSpecialty(this.newSpecialty).subscribe(result => {
         this.specialtiesService.getCollegeSpecialties(this.collegeId).subscribe(res => {

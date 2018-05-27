@@ -52,7 +52,7 @@ export class AllStudentsComponent {
         student: this.newStudent}
     });
 
-    dialogRef.afterClosed().pipe(filter(res => res !== "")).subscribe(result => {
+    dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {
       this.newStudent = result.student;
       this.studentsService.postStudent(this.newStudent).subscribe(result => {
         this.studentsService.getSubGroupStudents(this.sbId).subscribe(res => {

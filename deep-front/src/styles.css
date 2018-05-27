@@ -20,3 +20,48 @@ body {
   margin: 200px auto auto;
   max-width: 20%;
 }
+
+/*#marks-table {*/
+
+/*}*/
+
+/*#marks-table td {*/
+  /*width: 150px;*/
+/*}*/
+
+/*#marks-table td input {*/
+  /*border: 0;*/
+  /*width: 150px;*/
+/*}*/
+
+
+
+.zui-table {
+  border-spacing: 0;
+}
+
+.zui-table tbody td {
+  padding: 0;
+  width: 50px;
+}
+
+.zui-table tbody td input{
+  width: 50px;
+}
+
+.zui-wrapper {
+  position: relative;
+}
+
+.zui-scroller {
+  margin-left: 120px;
+  overflow-x: scroll;
+  width: 80%;
+}
+
+.zui-table .zui-sticky-col {
+  text-align: left;
+  left: 0;
+  position: absolute;
+  width: 20%;
+}

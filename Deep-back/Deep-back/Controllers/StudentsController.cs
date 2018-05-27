@@ -167,7 +167,7 @@ namespace DEEPLOM.Controllers
 		[HttpPost]
 		public async Task<IActionResult> PostStudent([FromBody] StudentDTO studentDto)
 		{
-			var user = await UserCreator.CreateUser(_userManager, studentDto.User.Username, studentDto.User.Password, "Student");
+			var user = await UserUtils.CreateUser(_userManager, studentDto.User.Username, studentDto.User.Password, "Student");
 			user.FirstName = studentDto.User.FirstName;
 			user.LastName  = studentDto.User.LastName;
 			user.UserName  = studentDto.User.Username;

@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Semester} from "../models/Semester";
 import {BaseService} from "./base.service";
+import {Subject} from '../models/Subject';
 
 @Injectable()
 export class SemestersService extends BaseService{
@@ -32,4 +33,16 @@ export class SemestersService extends BaseService{
 	deleteSemester(id: number) {
 		return this.http.delete(this.host.host + "/api/Semesters/" + id);
 	}
+
+  getSubjectGroupSemesters(teacher: number, group: number, subject: number): Observable<Semester[]> {
+    return this.http.get<Semester[]>(this.host.host + "/api/Semesters/teacher_group_subject?teacherId=" + teacher + "&groupId=" + group + "&subjectId=" + subject);
+  }
+
+  getSubGroupSemesters(id: number) {
+    return this.http.get<Semester[]>(this.host.host + "/api/Semesters/subGr/" + id);
+  }
+
+  getGroupSemesters(groupId: number) {
+    return this.http.get<Semester[]>(this.host.host + "/api/Semesters/Gr/" + groupId);
+  }
 }

@@ -11,10 +11,10 @@ namespace DEEPLOM.Models
 		public string UserId { get; set; }
 		public User User { get; set; }
 		
-		public CollegeGroup Group { get; set; }
-		
 		public int CollegeId { get; set; }
 		public College College { get; set; }
+		
+		public CollegeGroup Group { get; set; }
 		
 		public virtual List<TeacherSubjectInfo> TeacherSubjectInfos { get; set; }
 	}

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DEEPLOM.Models;
 using DEEPLOM.Utils;
+using Microsoft.AspNetCore.Identity;
 
 namespace DEEPLOM.Controllers
 {
@@ -15,10 +16,12 @@ namespace DEEPLOM.Controllers
 	public class CollegesController : Controller
 	{
 		private readonly CollegeDbContext _context;
+		public readonly UserManager<User> _userManager;
 
-		public CollegesController(CollegeDbContext context)
+		public CollegesController(CollegeDbContext context, UserManager<User> userManager)
 		{
 			_context = context;
+			_userManager = userManager;
 		}
 
 		// GET: api/Colleges
@@ -27,7 +30,6 @@ namespace DEEPLOM.Controllers
 		{
 			return _context.Colleges
 			               .Include(c => c.Director)
-			               .ThenInclude(d => d.User)
 			               .Select(c => new CollegeDTO()
 			               {
 				               ID   = c.ID,

@@ -9,117 +9,141 @@ using DEEPLOM.Models;
 
 namespace DEEPLOM.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Lessons")]
-    public class LessonsController : Controller
-    {
-        private readonly CollegeDbContext _context;
+	[Produces("application/json")]
+	[Route("api/Lessons")]
+	public class LessonsController : Controller
+	{
+		private readonly CollegeDbContext _context;
 
-        public LessonsController(CollegeDbContext context)
-        {
-            _context = context;
-        }
+		public LessonsController(CollegeDbContext context)
+		{
+			_context = context;
+		}
 
-        // GET: api/Lessons
-        [HttpGet]
-        public IEnumerable<Lesson> GetLessons()
-        {
-            return _context.Lessons;
-        }
+		// GET: api/Lessons
+		[HttpGet]
+		public IEnumerable<Lesson> GetLessons()
+		{
+			return _context.Lessons;
+		}
 
-        // GET: api/Lessons/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetLesson([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		[HttpGet("notall")]
+		public async Task<IActionResult> GetLesson(int subjectId, int semesterId, int teacherId, DateTime date)
+		{
+			return Ok(
+				_context.Lessons
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Semester)
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Subject)
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Teacher)
+				        .Where(
+					        m => m.TeacherSubjectInfo.SubjectId == subjectId &&
+					             m.TeacherSubjectInfo.SemesterId == semesterId &&
+					             m.TeacherSubjectInfo.TeacherId == teacherId &&
+					             m.Date == date)
+				        .Select(l => new LessonDTO()
+				        {
+					        ID   = l.ID,
+					        Date = l.Date.ToString("yyyy-MM-dd")
+				        }).ToList()[0]
+			);
+		}
 
-            var lesson = await _context.Lessons.SingleOrDefaultAsync(m => m.ID == id);
+		// GET: api/Lessons/5
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetLesson([FromRoute] int id)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            if (lesson == null)
-            {
-                return NotFound();
-            }
+			var lesson = await _context.Lessons.SingleOrDefaultAsync(m => m.ID == id);
 
-            return Ok(lesson);
-        }
+			if (lesson == null)
+			{
+				return NotFound();
+			}
 
-        // PUT: api/Lessons/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLesson([FromRoute] int id, [FromBody] Lesson lesson)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			return Ok(lesson);
+		}
 
-            if (id != lesson.ID)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Lessons/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutLesson([FromRoute] int id, [FromBody] Lesson lesson)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            _context.Entry(lesson).State = EntityState.Modified;
+			if (id != lesson.ID)
+			{
+				return BadRequest();
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LessonExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			_context.Entry(lesson).State = EntityState.Modified;
 
-            return NoContent();
-        }
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!LessonExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-        // POST: api/Lessons
-        [HttpPost]
-        public async Task<IActionResult> PostLesson([FromBody] Lesson lesson)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			return NoContent();
+		}
 
-            _context.Lessons.Add(lesson);
-            await _context.SaveChangesAsync();
+		// POST: api/Lessons
+		[HttpPost]
+		public async Task<IActionResult> PostLesson([FromBody] Lesson lesson)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            return CreatedAtAction("GetLesson", new { id = lesson.ID }, lesson);
-        }
+			_context.Lessons.Add(lesson);
+			await _context.SaveChangesAsync();
 
-        // DELETE: api/Lessons/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLesson([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			return CreatedAtAction("GetLesson", new {id = lesson.ID}, lesson);
+		}
 
-            var lesson = await _context.Lessons.SingleOrDefaultAsync(m => m.ID == id);
-            if (lesson == null)
-            {
-                return NotFound();
-            }
+		// DELETE: api/Lessons/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteLesson([FromRoute] int id)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            _context.Lessons.Remove(lesson);
-            await _context.SaveChangesAsync();
+			var lesson = await _context.Lessons.SingleOrDefaultAsync(m => m.ID == id);
+			if (lesson == null)
+			{
+				return NotFound();
+			}
 
-            return Ok(lesson);
-        }
+			_context.Lessons.Remove(lesson);
+			await _context.SaveChangesAsync();
 
-        private bool LessonExists(int id)
-        {
-            return _context.Lessons.Any(e => e.ID == id);
-        }
-    }
+			return Ok(lesson);
+		}
+
+		private bool LessonExists(int id)
+		{
+			return _context.Lessons.Any(e => e.ID == id);
+		}
+	}
 }

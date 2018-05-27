@@ -8,3 +8,51 @@
 	</span>
 	<button (click)="onDelete(semester.id)">Delete</button>
 </div>
+
+<div class="component-root">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5 table" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+      <td mat-cell *matCellDef="let semester"> {{semester.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Номер</th>
+      <td mat-cell *matCellDef="let semester"> {{semester.number}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Начало</th>
+      <td mat-cell *matCellDef="let semester"> {{semester.startDate}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Конец</th>
+      <td mat-cell *matCellDef="let semester"> {{semester.endDate}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subgroup">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Подгруппа</th>
+      <td mat-cell *matCellDef="let semester"> {{semester.subGroup.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="semesterDelete">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="openDialog()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let semester">
+        <button mat-icon-button (click)="onDelete(semester.id)" color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['../../../semesters/edit', semester.id]" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'number', 'startDate', 'endDate', 'subgroup', 'semesterDelete']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'number', 'startDate', 'endDate', 'subgroup', 'semesterDelete']"></tr>
+  </table>
+</div>

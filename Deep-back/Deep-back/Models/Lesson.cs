@@ -9,7 +9,7 @@ namespace DEEPLOM.Models
 		public int ID { get; set; }
 		public DateTime Date { get; set; }
 		
-		public int TopicId { get; set; }
+		public int? TopicId { get; set; }
 		public Topic Topic { get; set; }
 		
 		public int TeacherSubjectInfoId { get; set; }

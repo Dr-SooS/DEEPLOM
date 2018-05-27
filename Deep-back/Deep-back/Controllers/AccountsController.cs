@@ -60,7 +60,9 @@ namespace DEEPLOM.Controllers
             {
                 Id = user.Id,
                 Role = roles[0],
-                Username = user.UserName
+                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         } 
 
@@ -104,7 +106,7 @@ namespace DEEPLOM.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, roles[0])
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, roles[0]),
             };
 
             var creds = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"])), SecurityAlgorithms.HmacSha256);

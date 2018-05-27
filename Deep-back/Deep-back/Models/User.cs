@@ -9,6 +9,8 @@ namespace DEEPLOM.Models
 		public string LastName   { get; set; }
 		public string MiddleName { get; set; }
 		
-		public Director Director { get; set; }
+		public virtual List<Director> Directors { get; set; }
+		public virtual List<Student> Students { get; set; }
+		public virtual List<Teacher> Teachers { get; set; }
 	}
 }

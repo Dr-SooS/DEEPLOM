@@ -52,7 +52,11 @@ namespace DEEPLOM.Controllers
 				               IsAbsent   = m.IsAbsent,
 				               IsCredited = m.IsCredited,
 				               Value      = m.Value,
-				               Date       = m.Lesson.Date.ToString("yyyy-MM-dd"),
+				               Lesson = new LessonDTO()
+				               {
+					               ID   = m.LessonId,
+					               Date = m.Lesson.Date.ToString("yyyy-MM-dd"),
+				               },
 				               Student = new StudentDTO()
 				               {
 					               Id = m.StudentId,
@@ -87,19 +91,14 @@ namespace DEEPLOM.Controllers
 
 		// PUT: api/Marks/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutMark([FromRoute] int id, [FromBody] Mark mark)
+		public async Task<IActionResult> PutMark([FromRoute] int id, [FromBody] MarkDTO markDto)
 		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
-
-			if (id != mark.ID)
-			{
-				return BadRequest();
-			}
-
-			_context.Entry(mark).State = EntityState.Modified;
+			var mark = await _context.Marks.FirstOrDefaultAsync(m => m.ID == id);
+			mark.IsAbsent   = markDto.IsAbsent;
+			mark.IsCredited = markDto.IsCredited;
+			mark.Value      = markDto.Value;
+			mark.StudentId  = markDto.Student.Id;
+			mark.LessonId   = markDto.Lesson.ID;
 
 			try
 			{
@@ -122,17 +121,24 @@ namespace DEEPLOM.Controllers
 
 		// POST: api/Marks
 		[HttpPost]
-		public async Task<IActionResult> PostMark([FromBody] Mark mark)
+		public async Task<IActionResult> PostMark([FromBody] MarkDTO markDto)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			_context.Marks.Add(mark);
+			_context.Marks.Add(new Mark()
+			{
+				IsAbsent   = markDto.IsAbsent,
+				IsCredited = markDto.IsCredited,
+				Value      = markDto.Value,
+				LessonId   = markDto.Lesson.ID,
+				StudentId  = markDto.Student.Id
+			});
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetMark", new {id = mark.ID}, mark);
+			return Ok();
 		}
 
 		// DELETE: api/Marks/5

@@ -8,8 +8,8 @@ import {BaseService} from "./base.service";
 @Injectable()
 export class TeachersService extends BaseService{
 
-	constructor(protected http: HttpClient, protected host: HostService) 
-	{ 
+	constructor(protected http: HttpClient, protected host: HostService)
+	{
 		super(http, host);
 	}
 
@@ -20,7 +20,11 @@ export class TeachersService extends BaseService{
 	getCollegeTeachers(collegeId: number): Observable<Teacher[]> {
 		return this.http.get<Teacher[]>(this.host.host + "/api/Teachers/college/" + collegeId);
 	}
-	
+
+	getSubGroupTeachers(sbId: number): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(this.host.host + "/api/Teachers/subGroup/" + sbId);
+  }
+
 	getTeacher(id: number): Observable<Teacher> {
 		return this.http.get<Teacher>(this.host.host + "/api/Teachers/" + id);
 	}
@@ -32,7 +36,7 @@ export class TeachersService extends BaseService{
 	putTeacher(id: number,  teacher: Teacher) {
 		return this.http.put(this.host.host + "/api/Teachers/" + id, teacher);
 	}
-	
+
 	deleteTeacher(id: number) {
 		return this.http.delete(this.host.host + "/api/Teachers/" + id);
 	}

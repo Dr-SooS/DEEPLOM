@@ -14,11 +14,10 @@ import {MaterialModule} from '../../material.module';
 
 @NgModule({
   declarations: [
-    CreateSpecialtyDialog,
     CreateGroupDialog,
     AllGroupsComponent,
     EditSpecialtyComponent,],
-  entryComponents: [CreateSpecialtyDialog, CreateGroupDialog],
+  entryComponents: [CreateGroupDialog],
   imports: [
     MaterialModule,
     CommonModule,
