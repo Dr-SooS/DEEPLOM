@@ -34,7 +34,7 @@ export class DirectorsService extends BaseService{
 		return this.http.delete(this.host.host + "/api/Directors/" + id);
 	}
 
-  getDirectorByUser(id: number) {
+  getDirectorByUser(id: string) {
     return this.http.get<Director>(this.host.host + "/api/Directors/user/" + id);
   }
 }

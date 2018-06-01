@@ -117,6 +117,46 @@ namespace Deepback.Migrations
                     b.ToTable("Marks");
                 });
 
+            modelBuilder.Entity("DEEPLOM.Models.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("RecieverId");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("Topic");
+
+                    b.Property<string>("UserSenderId")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RecieverId");
+
+                    b.HasIndex("UserSenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("DEEPLOM.Models.Reciever", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("UserRecieverId")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserRecieverId");
+
+                    b.ToTable("Recievers");
+                });
+
             modelBuilder.Entity("DEEPLOM.Models.Semester", b =>
                 {
                     b.Property<int>("ID")
@@ -474,6 +514,27 @@ namespace Deepback.Migrations
                     b.HasOne("DEEPLOM.Models.Student", "Student")
                         .WithMany("Marks")
                         .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DEEPLOM.Models.Message", b =>
+                {
+                    b.HasOne("DEEPLOM.Models.Reciever", "Reciever")
+                        .WithMany()
+                        .HasForeignKey("RecieverId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DEEPLOM.Models.User", "UserSender")
+                        .WithMany()
+                        .HasForeignKey("UserSenderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DEEPLOM.Models.Reciever", b =>
+                {
+                    b.HasOne("DEEPLOM.Models.User", "UserReciever")
+                        .WithMany()
+                        .HasForeignKey("UserRecieverId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

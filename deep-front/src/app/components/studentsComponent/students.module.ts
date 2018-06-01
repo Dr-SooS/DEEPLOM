@@ -7,14 +7,18 @@ import {GroupsService} from "../../services/groups.service";
 import {SubGroupsService} from "../../services/subGroups.service";
 import {StudentsService} from "../../services/students.service";
 import {EditStudentComponent} from "./editStudentComponent/editStudent.component";
+import {MaterialModule} from '../../material.module';
+import {AllStudentsTsiComponent} from '../tsiComponents/allTsiComponent/allStudentsTsi.component';
 
 
 @NgModule({
 	declarations: [
 		EditStudentComponent,
+    AllStudentsTsiComponent,
 	],
 	imports: [
 		CommonModule,
+    MaterialModule,
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forChild([

@@ -5,7 +5,7 @@ export class Mark {
   id: number;
   value: number;
   isCredited: boolean;
-  isAbbsent: boolean;
+  isAbsent: boolean;
   lesson: Lesson;
   student: Student;
 }

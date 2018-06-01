@@ -1,0 +1,11 @@
+<div>
+	<div>
+		<mat-toolbar class="mat-elevation-z5" color='primary'>
+        <button *ngIf="teacher.group" mat-button [routerLink]="['groups/edit', teacher.group.id]">Кураторская группа</button>
+		</mat-toolbar>
+
+    <div>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

@@ -18,6 +18,8 @@ namespace DEEPLOM.Models
 		public DbSet<Teacher> Teachers { get; set; }
 		public DbSet<TeacherSubjectInfo> TeacherSubjectInfos { get; set; }
 		public DbSet<Topic> Topics { get; set; }
+		public DbSet<Message> Messages { get; set; }
+		public DbSet<Reciever> Recievers { get; set; }
 		public DbSet<User> Users { get; set; }
 		
 		public CollegeDbContext(DbContextOptions options): base(options) {}

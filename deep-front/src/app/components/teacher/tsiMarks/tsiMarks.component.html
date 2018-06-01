@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" *ngIf="tsi.subject !== undefined">
+  {{ 'Дициплина: ' + tsi.subject.name + ', Подгруппа: ' + tsi.semester.subGroup.id + ', Семестр: ' + tsi.semester.number
+  + ', Преподаватель: ' + tsi.teacher.user.lastName + ' ' + tsi.teacher.user.firstName}}
+</mat-toolbar>
+<div class="component-root">
+
+  <mat-card>
+    <div class="zui-wrapper">
+      <div class="zui-scroller">
+        <table class="zui-table">
+          <tbody>
+          <tr>
+            <td class="zui-sticky-col" height="30px"></td>
+            <td *ngFor="let month of monthDates">
+              <tr>
+                <td class="month_cell" [colSpan]="month.dates.length">{{getMonthName(month.month)}}</td>
+              </tr>
+              <tr>
+                <td class="date_cell" *ngFor="let date of month.dates">{{date.getDate()}}</td>
+              </tr>
+              <tr><td class="date_cell" *ngFor="let date of month.dates">
+                <button mat-icon-button (click)="updateTopic(date)">
+                  <mat-icon>list</mat-icon>
+                </button>
+              </td></tr>
+            </td>
+          </tr>
+          <tr *ngFor="let student of students">
+            <th class="zui-sticky-col student_row">{{student.user.lastName + ' ' + student.user.firstName}}</th>
+            <td *ngFor="let month of monthDates">
+              <tr>
+                <td class="mark_cell" *ngFor="let date of month.dates">
+                  <input style="text-align: center" type="text" [ngModel]="getMarkText(findMark(student.id, date))"
+                     (blur)="updateMark($event, findMark(student.id, date), date, student)">
+                </td>
+              </tr>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</div>

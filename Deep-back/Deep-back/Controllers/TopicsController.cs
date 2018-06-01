@@ -31,6 +31,13 @@ namespace DEEPLOM.Controllers
 			return topics;
 		}
 
+	    [HttpGet("subject/{id}")]
+	    public async Task<IActionResult> GetSubjectTopic([FromRoute] int id)
+	    {
+		    return Ok(_context.Topics.Where(t => t.SubjectId == id).Select(t => new TopicDTO() {ID = t.ID, Name = t.Name}));
+	    }
+	    
+	    
 		// GET: api/Topics/5
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetTopic([FromRoute] int id)

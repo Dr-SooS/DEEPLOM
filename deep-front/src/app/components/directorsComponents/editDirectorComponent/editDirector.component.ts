@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HostService} from "../../../services/host.service";
 import {Director} from "../../../models/Director";
@@ -16,7 +16,7 @@ export class EditDirectorComponent{
 
 	director: Director = new Director();
 	colleges: College[] = [];
-	id: number;
+	@Input()id: number;
 
 	constructor(
 		private http: HttpClient,
@@ -25,17 +25,17 @@ export class EditDirectorComponent{
 		private directorsService: DirectorsService,
 		private collegesService: CollegesService
 	) {}
-	
+
 
 	ngOnInit() {
 		this.director.user = new User();
 		this.director.college = new College();
-		
-		this.router.params.subscribe(p => this.id = +p['id']);
+		if (this.id === undefined)
+      this.router.params.subscribe(p => this.id = +p['id']);
 		this.directorsService.getDirector(this.id).subscribe(res => this.director = res as Director);
 		this.collegesService.getFreeColleges().subscribe(res => this.colleges = res as College[])
 	}
-	
+
 	onDirectorUpdate() {
 		this.directorsService.putDirector(this.id, this.director).subscribe();
 	}

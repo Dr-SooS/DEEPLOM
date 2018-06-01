@@ -4,6 +4,7 @@ import {Student} from "../models/Student";
 import {HttpClient} from "@angular/common/http";
 import {HostService} from "./host.service";
 import {BaseService} from "./base.service";
+import {Teacher} from '../models/Teacher';
 
 @Injectable()
 export class StudentsService extends BaseService{
@@ -21,7 +22,11 @@ export class StudentsService extends BaseService{
 	getSubGroupStudents(id: number): Observable<Student[]> {
 		return this.http.get<Student[]>(this.host.host + "/api/Students/subgroup/" + id);
 	}
-	
+
+  getStudentByUser(id: string) {
+    return this.http.get<Student>(this.host.host + "/api/Students/user/" + id);
+  }
+
 	getStudent(id: number): Observable<Student> {
 		return this.http.get<Student>(this.host.host + "/api/Students/" + id);
 	}
@@ -33,7 +38,7 @@ export class StudentsService extends BaseService{
 	putStudent(id: number,  student: Student) {
 		return this.http.put(this.host.host + "/api/Students/" + id, student);
 	}
-	
+
 	deleteStudent(id: number) {
 		return this.http.delete(this.host.host + "/api/Students/" + id);
 	}

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Создать студента</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Тема" [(ngModel)]="data.message.topic">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Сообщение" [(ngModel)]="data.message.text"></textarea>
+  </mat-form-field>
+  <br>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button (click)="close()">Подтвердить</button>
+</mat-dialog-actions>

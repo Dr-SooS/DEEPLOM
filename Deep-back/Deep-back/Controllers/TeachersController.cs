@@ -100,6 +100,43 @@ namespace DEEPLOM.Controllers
 			               .Distinct()
 			               .ToList();
 		}
+		
+		[HttpGet("user/{id}")]
+		public async Task<IActionResult> GetTeacherByUser([FromRoute] string id)
+		{
+			var director = await _context.Teachers
+			                             .Include(d => d.User)
+			                             .Include(d => d.College)
+			                             .Include(d => d.Group)
+			                             .Select(d => new TeacherDTO()
+			                             {
+				                             ID = d.ID,
+				                             College = d.College != null ? new CollegeDTO()
+				                             {
+					                             ID   = d.College.ID,
+					                             Name = d.College.Name
+				                             } : null,
+				                             User = new UserDTO()
+				                             {
+					                             FirstName = d.User.FirstName,
+					                             LastName  = d.User.LastName,
+					                             Id        = d.User.Id,
+					                             Username  = d.User.UserName
+				                             },
+				                             Group = d.Group != null ? new CollegeGroupDTO()
+				                             {
+					                             ID = d.Group.ID,
+					                             Number = d.Group.Number
+				                             } : null
+			                             }).FirstOrDefaultAsync(m => m.User.Id == id);
+
+			if (director == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(director);
+		}
 
 		// GET: api/Teachers/5
 		[HttpGet("{id}")]

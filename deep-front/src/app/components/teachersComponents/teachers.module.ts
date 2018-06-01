@@ -10,20 +10,24 @@ import {TeachersService} from '../../services/teachers.service';
 import {AllTeachersComponent, CreateTeacherDialog} from './allTeachersComponent/allTeachers.component';
 import {CollegesService} from '../../services/colleges.service';
 import {MaterialModule} from '../../material.module';
-import {AllTSIsComponent, CreateTSIDialog} from '../tsiComponents/allTsiComponent/allTsi.component';
+import {AllTeacherTsiComponent, CreateTSIDialog} from '../tsiComponents/allTsiComponent/allTeacherTsi.component';
 import {TSIsService} from '../../services/tsi.service';
 import {SemestersService} from '../../services/semesters.service ';
 import {SubjectsService} from '../../services/subjects.service';
+import {LessonsService} from '../../services/lessons.service';
+import {MessagesModule} from '../messages/messages.module';
+import {SendMessageDialog} from '../messages/sendDialog/send-message.dialog';
 
 @NgModule({
   declarations: [
     CreateTeacherDialog,
     AllTeachersComponent,
     EditTeacherComponent,
-    AllTSIsComponent,
-    CreateTSIDialog
+    AllTeacherTsiComponent,
+    CreateTSIDialog,
+    SendMessageDialog
   ],
-  entryComponents: [CreateTeacherDialog, CreateTSIDialog],
+  entryComponents: [CreateTeacherDialog, CreateTSIDialog, SendMessageDialog],
   imports: [
     MaterialModule,
     CommonModule,
@@ -41,7 +45,8 @@ import {SubjectsService} from '../../services/subjects.service';
     CollegesService,
     TSIsService,
     SemestersService,
-    SubjectsService
+    SubjectsService,
+    LessonsService
   ]
 })
 

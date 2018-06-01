@@ -6,10 +6,18 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { MaterialModule } from "../../material.module";
 import {DirectorsService} from '../../services/directors.service';
+import {DirectorHomeComponent} from './directorHome/directorHome.component';
+import {EditDirectorComponent} from '../directorsComponents/editDirectorComponent/editDirector.component';
+import {CollegesService} from '../../services/colleges.service';
+import {TSIsService} from '../../services/tsi.service';
+import {TsiMarksComponent} from '../teacher/tsiMarks/tsiMarks.component';
 
 @NgModule({
 	declarations: [
 		DirectorComponent,
+    DirectorHomeComponent,
+    EditDirectorComponent,
+    TsiMarksComponent
 	],
 	imports: [
 		MaterialModule,
@@ -19,19 +27,24 @@ import {DirectorsService} from '../../services/directors.service';
 		RouterModule.forChild([
 			{
 				path: '', component: DirectorComponent, children: [
+          {path: '', component: DirectorHomeComponent},
 					{path: 'colleges', loadChildren: '../collegesComponents/colleges.module#CollegesModule'},
 					{path: 'specialties', loadChildren: '../specialtiesComponents/specialties.module#SpecialtiesModule'},
 					{path: 'groups', loadChildren: '../groupsComponents/groups.module#GroupsModule'},
 					{path: 'subGroups', loadChildren: '../subGroupsComponents/subGroups.module#SubGroupsModule'},
 					{path: 'students', loadChildren: '../studentsComponent/students.module#StudentsModule'},
 					{path: 'teachers', loadChildren: '../teachersComponents/teachers.module#TeachersModule'},
-          {path: 'marks', loadChildren: '../marksComponents/marks.module#MarksModule'}
+          {path: 'tsiMarks', component: TsiMarksComponent},
+          {path: 'marks', loadChildren: '../marksComponents/marks.module#MarksModule'},
+          {path: 'messages', loadChildren: '../messages/messages.module#MessagesModule'}
 				]
 			},
 		])
 	],
 	providers: [
-	  DirectorsService
+	  DirectorsService,
+    CollegesService,
+    TSIsService
 	]
 })
 

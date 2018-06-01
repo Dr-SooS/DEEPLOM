@@ -1,9 +1,29 @@
-<div>
-	<input type="text" [(ngModel)]="director.user.firstName">
-	<input type="text" [(ngModel)]="director.user.lastName">
-	<input type="text" [(ngModel)]="director.user.username">
-	<select [(ngModel)]="director.college">
-		<option *ngFor="let c of colleges" [ngValue]="c">{{c.name}}</option>
-	</select>
-	<button (click)="onDirectorUpdate()">Send</button>
+<div class="component-root">
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Имя" [(ngModel)]="director.user.firstName">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" [(ngModel)]="director.user.lastName">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="director.user.username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Колледж" [(ngModel)]="director.college">
+        <mat-option *ngFor="let c of colleges" [value]="c">
+          {{ c.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="onDirectorUpdate()" color="primary">
+      <mat-icon>done</mat-icon>
+    </button>
+  </mat-card>
 </div>

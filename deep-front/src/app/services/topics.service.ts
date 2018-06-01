@@ -16,7 +16,7 @@ export class TopicsService extends BaseService{
 	getTopics(): Observable<Topic[]> {
 		return this.http.get<Topic[]>(this.host.host + "/api/Topics");
 	}
-	
+
 	getTopic(id: number): Observable<Topic> {
 		return this.http.get<Topic>(this.host.host + "/api/Topics/" + id);
 	}
@@ -32,4 +32,8 @@ export class TopicsService extends BaseService{
 	deleteTopic(id: number) {
 		return this.http.delete(this.host.host + "/api/Topics/" + id);
 	}
+
+  getSubjectTopics(id: number) {
+    return this.http.get<Topic[]>(this.host.host + "/api/Topics/subject/" + id);
+  }
 }

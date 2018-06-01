@@ -1,8 +1,32 @@
-<input type="text" [(ngModel)]="student.user.firstName">
-<input type="text" [(ngModel)]="student.user.lastName">
-<input type="text" [(ngModel)]="student.user.username">
-<select [(ngModel)]="student.subGroup">
-	<option [ngValue]="student.subGroup">{{student.subGroup.name}}</option>
-	<option *ngFor="let c of subGroups" [ngValue]="c">{{c.name}}</option>
-</select>
-<button (click)="onStudentUpdate()">Send</button>
+<div class="component-root">
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Имя" [(ngModel)]="student.user.firstName">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Фамилия" [(ngModel)]="student.user.lastName">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="student.user.username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Подгруппа" [(ngModel)]="student.subGroup">
+        <mat-option *ngFor="let c of subGroups" [value]="c">
+          {{ c.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-icon-button (click)="onStudentUpdate()" color="primary">
+      <mat-icon>done</mat-icon>
+    </button>
+  </mat-card>
+
+  <all-tsi *ngIf="student.id !== undefined" [id]="student.id"></all-tsi>
+
+</div>

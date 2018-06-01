@@ -17,6 +17,14 @@ import {CookieService} from 'angular2-cookie/core';
 import {StudentsService} from './services/students.service';
 import {DirectorGuard} from './routeProtectors/director.guard';
 import {UsersService} from './services/users.service';
+import {TeacherGuard} from './routeProtectors/teacher.guard';
+import {StudentGuard} from './routeProtectors/student.guard';
+import {TsiMarksComponent} from './components/teacher/tsiMarks/tsiMarks.component';
+import {TSIsService} from './services/tsi.service';
+import {LessonsService} from './services/lessons.service';
+import {TeachersService} from './services/teachers.service';
+import {GroupsService} from './services/groups.service';
+import {SubGroupsService} from './services/subGroups.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,8 @@ import {UsersService} from './services/users.service';
       {path: 'accounts/login', component: LoginComponent},
       {path: 'admin', loadChildren: './components/admin/admin.module#AdminModule', canActivate: [AdminGuard]},
       {path: 'director', loadChildren: './components/director/director.module#DirectorModule', canActivate: [DirectorGuard]},
+      {path: 'teacher', loadChildren: './components/teacher/teacher.module#TeacherModule', canActivate: [TeacherGuard]},
+      {path: 'student', loadChildren: './components/student/student.module#StudentModule', canActivate: [StudentGuard]},
     ])
   ],
   providers: [
@@ -45,6 +55,13 @@ import {UsersService} from './services/users.service';
     CookieService,
     HostService,
     UsersService,
+    TeacherGuard,
+    StudentGuard,
+    TSIsService,
+    LessonsService,
+    TeachersService,
+    GroupsService,
+    SubGroupsService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]

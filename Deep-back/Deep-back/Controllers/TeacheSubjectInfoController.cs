@@ -42,6 +42,135 @@ namespace DEEPLOM.Controllers
 			return Ok();
 		}
 
+		
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetTsi([FromRoute] int id)
+		{
+			return Ok(await _context.TeacherSubjectInfos
+			                  .Include(tsi => tsi.Subject)
+			                  .Include(tsi => tsi.Teacher)
+			                  .ThenInclude(t => t.User)
+			                  .Include(tsi => tsi.Semester)
+			                  .ThenInclude(s => s.SubGroup)
+			                  .Select(tsi => new TsiDto()
+			                  {
+				                  Id = tsi.ID,
+				                  Semester = new SemesterDTO()
+				                  {
+					                  ID     = tsi.SemesterId,
+					                  Number = tsi.Semester.Number,
+					                  StartDate = tsi.Semester.StartDate.ToString("yyyy-MM-dd"),
+					                  EndDate = tsi.Semester.EndDate.ToString("yyyy-MM-dd"),
+					                  SubGroup = new SubGroupDTO()
+					                  {
+						                  ID   = tsi.Semester.SubGroupId,
+						                  Name = tsi.Semester.SubGroup.Name
+					                  }
+				                  },
+				                  Subject = new SubjectDTO()
+				                  {
+					                  ID   = tsi.SubjectId,
+					                  Name = tsi.Subject.Name
+				                  },
+				                  Teacher = new TeacherDTO()
+				                  {
+					                  ID = tsi.Teacher.ID,
+					                  User = new UserDTO()
+					                  {
+						                  FirstName = tsi.Teacher.User.FirstName,
+						                  LastName  = tsi.Teacher.User.LastName,
+						                  Id        = tsi.Teacher.User.Id,
+						                  Username  = tsi.Teacher.User.UserName
+					                  }
+				                  }
+			                  }).FirstOrDefaultAsync(tsi => tsi.Id == id));
+		}
+
+		[HttpGet("group/{id}")]
+		public async Task<IActionResult> GetGroupTsi([FromRoute] int id)
+		{
+			return Ok(_context.TeacherSubjectInfos
+			                  .Include(tsi => tsi.Subject)
+			                  .Include(tsi => tsi.Teacher)
+			                  .ThenInclude(t => t.User)
+			                  .Include(tsi => tsi.Semester)
+			                  .ThenInclude(s => s.SubGroup)
+			                  .Where(tsi => tsi.Semester.SubGroup.GroupId == id)
+			                  .Select(tsi => new TsiDto()
+			                  {
+				                  Id = tsi.ID,
+				                  Semester = new SemesterDTO()
+				                  {
+					                  ID     = tsi.SemesterId,
+					                  Number = tsi.Semester.Number,
+					                  SubGroup = new SubGroupDTO()
+					                  {
+						                  ID   = tsi.Semester.SubGroupId,
+						                  Name = tsi.Semester.SubGroup.Name
+					                  }
+				                  },
+				                  Subject = new SubjectDTO()
+				                  {
+					                  ID   = tsi.SubjectId,
+					                  Name = tsi.Subject.Name
+				                  },
+				                  Teacher = new TeacherDTO()
+				                  {
+					                  ID = tsi.Teacher.ID,
+					                  User = new UserDTO()
+					                  {
+						                  FirstName = tsi.Teacher.User.FirstName,
+						                  LastName  = tsi.Teacher.User.LastName,
+						                  Id        = tsi.Teacher.User.Id,
+						                  Username  = tsi.Teacher.User.UserName
+					                  }
+				                  }
+			                  }));
+		}
+		
+		[HttpGet("student/{id}")]
+		public async Task<IActionResult> GetStudentTsi([FromRoute] int id)
+		{
+			var student = await _context.Students.Include(s => s.SubGroup).FirstOrDefaultAsync(s => s.ID == id);
+			return Ok(_context.TeacherSubjectInfos
+			                  .Include(tsi => tsi.Subject)
+			                  .Include(tsi => tsi.Teacher)
+			                  .ThenInclude(t => t.User)
+			                  .Include(tsi => tsi.Semester)
+			                  .ThenInclude(s => s.SubGroup)
+			                  .Where(tsi => tsi.Semester.SubGroup.GroupId == student.SubGroup.GroupId)
+			                  .Select(tsi => new TsiDto()
+			                  {
+				                  Id = tsi.ID,
+				                  Semester = new SemesterDTO()
+				                  {
+					                  ID     = tsi.SemesterId,
+					                  Number = tsi.Semester.Number,
+					                  SubGroup = new SubGroupDTO()
+					                  {
+						                  ID   = tsi.Semester.SubGroupId,
+						                  Name = tsi.Semester.SubGroup.Name
+					                  }
+				                  },
+				                  Subject = new SubjectDTO()
+				                  {
+					                  ID   = tsi.SubjectId,
+					                  Name = tsi.Subject.Name
+				                  },
+				                  Teacher = new TeacherDTO()
+				                  {
+					                  ID = tsi.Teacher.ID,
+					                  User = new UserDTO()
+					                  {
+						                  FirstName = tsi.Teacher.User.FirstName,
+						                  LastName  = tsi.Teacher.User.LastName,
+						                  Id        = tsi.Teacher.User.Id,
+						                  Username  = tsi.Teacher.User.UserName
+					                  }
+				                  }
+			                  }));
+		}
+		
 		[HttpGet("teacher/{id}")]
 		public async Task<IActionResult> GetTeacherTsi([FromRoute] int id)
 		{

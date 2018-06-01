@@ -27,6 +27,31 @@ namespace DEEPLOM.Controllers
 			return _context.Lessons;
 		}
 
+		[HttpGet("byTsi")]
+		public async Task<IActionResult> GetLessonByTsi(int tsiId, DateTime date)
+		{
+			var baseTsi = await _context.TeacherSubjectInfos.FirstOrDefaultAsync(tsi => tsi.ID == tsiId);
+			return Ok(
+				_context.Lessons
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Semester)
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Subject)
+				        .Include(l => l.TeacherSubjectInfo)
+				        .ThenInclude(ts => ts.Teacher)
+				        .Where(
+					        m => m.TeacherSubjectInfo.SubjectId == baseTsi.SubjectId &&
+					             m.TeacherSubjectInfo.SemesterId == baseTsi.SemesterId &&
+					             m.TeacherSubjectInfo.TeacherId == baseTsi.TeacherId &&
+					             m.Date == date)
+				        .Select(l => new LessonDTO()
+				        {
+					        ID   = l.ID,
+					        Date = l.Date.ToString("yyyy-MM-dd")
+				        }).ToList()[0]
+			);
+		}
+		
 		[HttpGet("notall")]
 		public async Task<IActionResult> GetLesson(int subjectId, int semesterId, int teacherId, DateTime date)
 		{
@@ -72,20 +97,16 @@ namespace DEEPLOM.Controllers
 
 		// PUT: api/Lessons/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutLesson([FromRoute] int id, [FromBody] Lesson lesson)
+		public async Task<IActionResult> PutLesson([FromRoute] int id, [FromBody] LessonDTO lessonDto)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			if (id != lesson.ID)
-			{
-				return BadRequest();
-			}
-
-			_context.Entry(lesson).State = EntityState.Modified;
-
+			var lesson = await _context.Lessons.FirstOrDefaultAsync(l => l.ID == id);
+			lesson.TopicId = lessonDto.Topic.ID;
+			
 			try
 			{
 				await _context.SaveChangesAsync();

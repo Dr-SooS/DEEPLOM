@@ -40,4 +40,9 @@ export class TeachersService extends BaseService{
 	deleteTeacher(id: number) {
 		return this.http.delete(this.host.host + "/api/Teachers/" + id);
 	}
+
+  getTeacherByUser(id: string) {
+    return this.http.get<Teacher>(this.host.host + "/api/Teachers/user/" + id);
+  }
+
 }

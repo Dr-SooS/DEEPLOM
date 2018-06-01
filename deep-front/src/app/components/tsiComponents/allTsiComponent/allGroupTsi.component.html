@@ -15,23 +15,7 @@
       <td mat-cell *matCellDef="let tsi"> {{tsi.semester.number}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="tsiDelete">
-      <th mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button (click)="openDialog()" color="primary">
-          <mat-icon>add</mat-icon>
-        </button>
-      </th>
-      <td mat-cell *matCellDef="let tsi">
-        <button mat-icon-button (click)="onDelete(tsi.id)" color="warn">
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button mat-icon-button [routerLink]="" color="primary">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="['group', 'subject', 'semester', 'tsiDelete']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['group', 'subject', 'semester', 'tsiDelete']"></tr>
+    <tr mat-header-row *matHeaderRowDef="['group', 'subject', 'semester']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['group', 'subject', 'semester'] "[routerLink]="['../../../tsiMarks']" [queryParams]="{'tsiId':row.id}"></tr>
   </table>
 </div>

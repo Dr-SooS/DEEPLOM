@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-button (click)="getIncoming()">Входящие</button>
+  <button mat-button (click)="getSent()">Отправленные</button>
+</mat-toolbar>
+<div class="component-root">
+  <mat-card *ngIf="messages !== []">
+    <mat-card-title>{{header}}</mat-card-title>
+    <mat-list>
+      <mat-divider></mat-divider>
+      <div *ngFor="let message of messages" [routerLink]="['message', message.id]">
+        <mat-list-item>
+          <span>{{message.topic}}</span>
+          <span style="margin-left: 70%">{{message.userSender.firstName + ' ' + message.userSender.lastName}}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </mat-card>
+</div>

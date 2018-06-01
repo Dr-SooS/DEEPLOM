@@ -23,6 +23,40 @@ namespace DEEPLOM.Controllers
 			_context     = context;
 			_userManager = userManager;
 		}
+		
+		[HttpGet("user/{id}")]
+		public async Task<IActionResult> GetStudentByUser([FromRoute] string id)
+		{
+			var director = await _context.Students
+			                             .Include(d => d.User)
+			                             .Include(d => d.SubGroup)
+			                             .ThenInclude(s => s.Group)
+			                             .ThenInclude(g => g.Specialty)
+			                             .ThenInclude(s => s.College)
+			                             .Select(d => new StudentDTO()
+			                             {
+				                             Id = d.ID,
+				                             SubGroup = new SubGroupDTO()
+				                             {
+					                             ID = d.SubGroupId,
+					                             Name = d.SubGroup.Name
+				                             },
+				                             User = new UserDTO()
+				                             {
+					                             FirstName = d.User.FirstName,
+					                             LastName  = d.User.LastName,
+					                             Id        = d.User.Id,
+					                             Username  = d.User.UserName
+				                             }
+			                             }).FirstOrDefaultAsync(m => m.User.Id == id);
+
+			if (director == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(director);
+		}
 
 		// GET: api/Students
 		[HttpGet]

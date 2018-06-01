@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Изменить тему</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-select placeholder="Тема" [(ngModel)]="selectedTopic" [compareWith]="compareFn">
+      <mat-option *ngFor="let t of topics" [value]="t">
+        {{ t.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Отмена</button>
+  <button mat-button (click)="close()">Подтвердить</button>
+</mat-dialog-actions>

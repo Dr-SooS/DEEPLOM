@@ -11,6 +11,7 @@
           <e p="DirectorsController.cs" t="Include" />
           <e p="LessonsController.cs" t="Include" />
           <e p="MarksController.cs" t="Include" />
+          <e p="MessagesController.cs" t="Include" />
           <e p="OptionsController.cs" t="Include" />
           <e p="SeederController.cs" t="Include" />
           <e p="SemestersController.cs" t="Include" />
@@ -25,8 +26,8 @@
         </e>
         <e p="Deep-back.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20180523085446_init.Designer.cs" t="Include" />
-          <e p="20180523085446_init.cs" t="Include" />
+          <e p="20180531150619_init.Designer.cs" t="Include" />
+          <e p="20180531150619_init.cs" t="Include" />
           <e p="CollegeDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -39,6 +40,7 @@
             <e p="DirectorDTO.cs" t="Include" />
             <e p="LessonDTO.cs" t="Include" />
             <e p="MarkDTO.cs" t="Include" />
+            <e p="MessageDTO.cs" t="Include" />
             <e p="SemesterDTO.cs" t="Include" />
             <e p="SpecialtyDTO.cs" t="Include" />
             <e p="StudentDTO.cs" t="Include" />
@@ -52,6 +54,8 @@
           <e p="Director.cs" t="Include" />
           <e p="Lesson.cs" t="Include" />
           <e p="Mark.cs" t="Include" />
+          <e p="Message.cs" t="Include" />
+          <e p="Reciever.cs" t="Include" />
           <e p="Semester.cs" t="Include" />
           <e p="Specialty.cs" t="Include" />
           <e p="Student.cs" t="Include" />

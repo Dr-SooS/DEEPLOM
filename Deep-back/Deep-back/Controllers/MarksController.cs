@@ -27,6 +27,50 @@ namespace DEEPLOM.Controllers
 			return _context.Marks;
 		}
 
+		[HttpGet("byTsi")]
+		public async Task<IActionResult> GetMarksByTsi(int tsiId)
+		{
+			var baseTsi = await _context.TeacherSubjectInfos.FirstOrDefaultAsync(tsi => tsi.ID == tsiId);
+			return Ok(_context.Marks
+			               .Include(m => m.Lesson)
+			               .ThenInclude(l => l.TeacherSubjectInfo)
+			               .ThenInclude(ts => ts.Semester)
+			               .Include(m => m.Lesson)
+			               .ThenInclude(l => l.TeacherSubjectInfo)
+			               .ThenInclude(ts => ts.Subject)
+			               .Include(m => m.Lesson)
+			               .ThenInclude(l => l.TeacherSubjectInfo)
+			               .ThenInclude(ts => ts.Teacher)
+			               .Include(m => m.Student)
+			               .ThenInclude(s => s.User)
+			               .Where(
+				               m => m.Lesson.TeacherSubjectInfo.SubjectId == baseTsi.SubjectId &&
+				                    m.Lesson.TeacherSubjectInfo.SemesterId == baseTsi.SemesterId &&
+				                    m.Lesson.TeacherSubjectInfo.TeacherId == baseTsi.TeacherId)
+			               .Select(m => new MarkDTO()
+			               {
+				               ID         = m.ID,
+				               IsAbsent   = m.IsAbsent,
+				               IsCredited = m.IsCredited,
+				               Value      = m.Value,
+				               Lesson = new LessonDTO()
+				               {
+					               ID   = m.LessonId,
+					               Date = m.Lesson.Date.ToString("yyyy-MM-dd"),
+				               },
+				               Student = new StudentDTO()
+				               {
+					               Id = m.StudentId,
+					               User = new UserDTO()
+					               {
+						               Id        = m.Student.UserId,
+						               FirstName = m.Student.User.FirstName,
+						               LastName  = m.Student.User.LastName
+					               }
+				               }
+			               }).ToList());
+		}
+		
 		[HttpGet("notall")]
 		public IEnumerable<MarkDTO> GetMarks(int subjectId, int semesterId, int teacherId)
 		{

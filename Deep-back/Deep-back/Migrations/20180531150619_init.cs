@@ -244,6 +244,25 @@ namespace Deepback.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Recievers",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserRecieverId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recievers", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Recievers_AspNetUsers_UserRecieverId",
+                        column: x => x.UserRecieverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Teachers",
                 columns: table => new
                 {
@@ -286,6 +305,35 @@ namespace Deepback.Migrations
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    RecieverId = table.Column<int>(nullable: false),
+                    Text = table.Column<string>(nullable: true),
+                    Topic = table.Column<string>(nullable: true),
+                    UserSenderId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Messages_Recievers_RecieverId",
+                        column: x => x.RecieverId,
+                        principalTable: "Recievers",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Messages_AspNetUsers_UserSenderId",
+                        column: x => x.UserSenderId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -558,6 +606,21 @@ namespace Deepback.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Messages_RecieverId",
+                table: "Messages",
+                column: "RecieverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_UserSenderId",
+                table: "Messages",
+                column: "UserSenderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Recievers_UserRecieverId",
+                table: "Recievers",
+                column: "UserRecieverId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Semesters_SubGroupId",
                 table: "Semesters",
                 column: "SubGroupId");
@@ -642,6 +705,9 @@ namespace Deepback.Migrations
                 name: "Marks");
 
             migrationBuilder.DropTable(
+                name: "Messages");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -649,6 +715,9 @@ namespace Deepback.Migrations
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Recievers");
 
             migrationBuilder.DropTable(
                 name: "TeacherSubjectInfos");

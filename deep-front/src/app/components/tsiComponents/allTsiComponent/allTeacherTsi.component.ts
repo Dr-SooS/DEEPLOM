@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {College} from '../../../models/College';
 import {HttpClient} from '@angular/common/http';
 import {HostService} from '../../../services/host.service';
 import {TSI} from '../../../models/TSI';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 import {TeachersService} from '../../../services/teachers.service';
 import {Teacher} from '../../../models/Teacher';
@@ -18,23 +18,24 @@ import {SubjectsService} from '../../../services/subjects.service';
 
 @Component({
   selector: 'all-tsi',
-  templateUrl: './allTsi.component.html',
+  templateUrl: './allTeachersTsi.component.html',
 })
-export class AllTSIsComponent {
+export class AllTeacherTsiComponent {
 
   newTSI: TSI = new TSI();
   dataSource = new MatTableDataSource();
-  id: number;
+  @Input()id: number;
 
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private http: HttpClient,
               private host: HostService,
               private tsisService: TSIsService,
-              private router: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              private teachersService: TeachersService) { }
+              private teachersService: TeachersService,
+              private router: Router) { }
 
   ngOnInit() {
     this.dataSource.sortingDataAccessor = (item, property) => {
@@ -50,7 +51,8 @@ export class AllTSIsComponent {
       }
     }
     this.dataSource.sort = this.sort;
-    this.router.params.subscribe(p => this.id = +p['id']);
+    if (this.id === undefined)
+      this.activatedRoute.params.subscribe(p => this.id = +p['id']);
     this.teachersService.getTeacher(this.id).subscribe(res => this.newTSI.teacher = res as Teacher);
     this.tsisService.getTeacherTSIs(this.id).subscribe(res => this.dataSource.data = res as TSI[]);
   }
@@ -78,6 +80,7 @@ export class AllTSIsComponent {
       });
     });
   }
+
 }
 
 @Component({

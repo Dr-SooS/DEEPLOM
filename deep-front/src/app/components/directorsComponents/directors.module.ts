@@ -9,6 +9,7 @@ import {DirectorsComponent} from "./directorsComponent/directors.component";
 import {AllDirectorsComponent} from "./allDirectorsComponent/allDirectors.component";
 import {CreateDirectorComponent} from "./createDirectorComponent/createDirector.component";
 import {EditDirectorComponent} from "./editDirectorComponent/editDirector.component";
+import {MaterialModule} from '../../material.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {EditDirectorComponent} from "./editDirectorComponent/editDirector.compon
 		CommonModule,
 		HttpClientModule,
 		FormsModule,
+    MaterialModule,
 		RouterModule.forChild([
 			{
 				path: '', component: DirectorsComponent, children: [

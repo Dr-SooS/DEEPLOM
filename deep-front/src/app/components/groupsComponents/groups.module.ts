@@ -13,6 +13,7 @@ import {AllStudentsComponent, CreateStudentDialog} from '../studentsComponent/al
 import {MaterialModule} from '../../material.module';
 import {AllSemestersComponent, CreateSemesterDialog} from '../semestersComponents/allSemestersComponent/allSemesters.component';
 import {SemestersService} from '../../services/semesters.service ';
+import {AllGroupTsiComponent} from '../tsiComponents/allTsiComponent/allGroupTsi.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {SemestersService} from '../../services/semesters.service ';
 		AllSubGroupsComponent,
 		EditGroupComponent,
     AllSemestersComponent,
-    CreateSemesterDialog
+    CreateSemesterDialog,
+    AllGroupTsiComponent
 	],
   entryComponents: [CreateSubGroupDialog, CreateStudentDialog, CreateSemesterDialog],
 	imports: [
@@ -35,12 +37,13 @@ import {SemestersService} from '../../services/semesters.service ';
 			{path: 'edit/:id', component: EditGroupComponent}
 		]),
 	],
+  exports: [AllGroupTsiComponent],
 	providers: [
 		SpecialtiesService,
 		GroupsService,
 		SubGroupsService,
 		StudentsService,
-    SemestersService
+    SemestersService,
 	]
 })
 

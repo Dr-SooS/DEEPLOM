@@ -36,4 +36,12 @@ export class TSIsService extends BaseService{
   deleteTSI(id: number) {
     return this.http.delete(this.host.host + "/api/TSIs/" + id);
   }
+
+  getGroupTSIs(id: number) {
+    return this.http.get<TSI[]>(this.host.host + "/api/TSIs/group/" + id);
+  }
+
+  getStudentTSIs(id: number) {
+    return this.http.get<TSI[]>(this.host.host + "/api/TSIs/student/" + id);
+  }
 }
