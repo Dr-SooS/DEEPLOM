@@ -25,6 +25,7 @@ import {LessonsService} from './services/lessons.service';
 import {TeachersService} from './services/teachers.service';
 import {GroupsService} from './services/groups.service';
 import {SubGroupsService} from './services/subGroups.service';
+import {MessageService} from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {SubGroupsService} from './services/subGroups.service';
     TeachersService,
     GroupsService,
     SubGroupsService,
+    MessageService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <div class="component-root">
   <mat-card *ngIf="message !== undefined">
-    <div>{{message.topic}}</div>
-    <div>{{message.userSender.firstName + ' ' + message.userSender.firstName}}</div>
-    <div style="width: 100%; height: 50%">{{message.text}}</div>
+    <h3>{{message.topic}}</h3>
+    <div>{{message.userSender.firstName + ' ' + message.userSender.lastName}}</div>
+    <div style="width: 100%; height: 50%;">{{message.text}}</div>
   </mat-card>
 </div>

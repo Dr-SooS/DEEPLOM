@@ -14,7 +14,6 @@ import {SendMessageDialog} from './sendDialog/send-message.dialog';
   declarations: [
     MessagesComponent,
     MessageComponent,
-    SendMessageDialog,
   ],
   imports: [
     MaterialModule,
@@ -25,9 +24,6 @@ import {SendMessageDialog} from './sendDialog/send-message.dialog';
       {path: '', component: MessagesComponent},
       {path: 'message/:id', component: MessageComponent},
     ])
-  ],
-  exports: [
-    SendMessageDialog
   ],
   providers: [
     UsersService,

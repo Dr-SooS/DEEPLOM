@@ -39,7 +39,8 @@ import {TopicsService} from '../../services/topics.service';
 					{path: 'groups', loadChildren: '../groupsComponents/groups.module#GroupsModule'},
 					{path: 'subGroups', loadChildren: '../subGroupsComponents/subGroups.module#SubGroupsModule'},
 					{path: 'students', loadChildren: '../studentsComponent/students.module#StudentsModule'},
-          {path: 'tsiMarks', component: TsiMarksComponent}
+          {path: 'tsiMarks', component: TsiMarksComponent},
+          {path: 'messages', loadChildren: '../messages/messages.module#MessagesModule'}
 				]
 			},
 		])

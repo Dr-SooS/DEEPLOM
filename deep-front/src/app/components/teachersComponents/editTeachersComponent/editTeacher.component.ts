@@ -12,6 +12,8 @@ import {filter} from 'rxjs/operators';
 import {CreateTeacherDialog} from '../allTeachersComponent/allTeachers.component';
 import {MatDialog} from '@angular/material';
 import {SendMessageDialog} from '../../messages/sendDialog/send-message.dialog';
+import {MessageService} from '../../../services/message.service';
+import {Message} from '../../../models/Message';
 
 @Component({
 	selector: 'edit-teacher',
@@ -28,6 +30,7 @@ export class EditTeacherComponent{
 		private router: ActivatedRoute,
 		private teachersService: TeachersService,
     private dialog: MatDialog,
+    private messageService: MessageService
 	) {}
 
 
@@ -52,6 +55,7 @@ export class EditTeacherComponent{
 
     dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {
       console.log(result);
+      this.messageService.sendMessage(result as Message).subscribe();
     });
   }
 }

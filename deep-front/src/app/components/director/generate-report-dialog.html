@@ -1,13 +1,21 @@
-<h2 mat-dialog-title>Новое сообщение</h2>
+<h2 mat-dialog-title></h2>
 <mat-dialog-content>
+
   <mat-form-field>
-    <input matInput placeholder="Тема" [(ngModel)]="data.message.topic">
+    <mat-select placeholder="Подгруппа">
+      <mat-option>
+
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <textarea matInput placeholder="Сообщение" [(ngModel)]="data.message.text"></textarea>
+    <mat-select placeholder="Семестр">
+      <mat-option>
+      </mat-option>
+    </mat-select>
   </mat-form-field>
-  <br>
+
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Отмена</button>

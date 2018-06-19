@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {DirectorComponent} from "./director.component";
+import {DirectorComponent, GenerateReportDialog} from './director.component';
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
@@ -10,15 +10,19 @@ import {DirectorHomeComponent} from './directorHome/directorHome.component';
 import {EditDirectorComponent} from '../directorsComponents/editDirectorComponent/editDirector.component';
 import {CollegesService} from '../../services/colleges.service';
 import {TSIsService} from '../../services/tsi.service';
-import {TsiMarksComponent} from '../teacher/tsiMarks/tsiMarks.component';
+import {ChangeLessonTopicDialog, TsiMarksComponent} from '../teacher/tsiMarks/tsiMarks.component';
+import {TopicsService} from '../../services/topics.service';
 
 @NgModule({
 	declarations: [
 		DirectorComponent,
     DirectorHomeComponent,
     EditDirectorComponent,
-    TsiMarksComponent
+    TsiMarksComponent,
+    ChangeLessonTopicDialog,
+    GenerateReportDialog,
 	],
+  entryComponents: [ChangeLessonTopicDialog, GenerateReportDialog],
 	imports: [
 		MaterialModule,
 		CommonModule,
@@ -44,7 +48,8 @@ import {TsiMarksComponent} from '../teacher/tsiMarks/tsiMarks.component';
 	providers: [
 	  DirectorsService,
     CollegesService,
-    TSIsService
+    TSIsService,
+    TopicsService
 	]
 })
 

@@ -13,6 +13,8 @@ import {Message} from '../../models/Message';
 })
 export class MessagesComponent {
 
+  incoming: boolean;
+
   header: string;
   user: User = new User();
   messages: Message[] = [];
@@ -32,6 +34,7 @@ export class MessagesComponent {
     this.messageService.getIncomingMessages(this.user.id).subscribe(res => {
       this.messages = res as Message[];
       this.header = "Входящие";
+      this.incoming = true;
     });
   }
 
@@ -39,6 +42,7 @@ export class MessagesComponent {
     this.messageService.getSentMessages(this.user.id).subscribe(res => {
       this.messages = res as Message[];
       this.header = "Отправленные";
+      this.incoming = false;
     });
   }
 }

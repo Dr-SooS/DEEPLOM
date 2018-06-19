@@ -10,7 +10,8 @@
       <div *ngFor="let message of messages" [routerLink]="['message', message.id]">
         <mat-list-item>
           <span>{{message.topic}}</span>
-          <span style="margin-left: 70%">{{message.userSender.firstName + ' ' + message.userSender.lastName}}</span>
+          <span *ngIf="incoming" style="margin-left: 200px">{{message.userSender.firstName + ' ' + message.userSender.lastName}}</span>
+          <span *ngIf="!incoming" style="margin-left: 200px">{{message.userReciever.firstName + ' ' + message.userReciever.lastName}}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
       </div>

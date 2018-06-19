@@ -19,6 +19,7 @@ export class SendMessageDialog {
     private userService: UsersService) { }
 
   ngOnInit() {
+    this.data.message = new Message();
     this.userService.getUser().subscribe(
      resizeBy => this.sender = resizeBy as User
     )

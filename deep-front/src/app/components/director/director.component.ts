@@ -1,9 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Director} from '../../models/Director';
 import {College} from '../../models/College';
 import {UsersService} from '../../services/users.service';
 import {DirectorsService} from '../../services/directors.service';
 import {User} from '../../models/User';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {filter} from 'rxjs/operators';
+import {SubGroup} from '../../models/SubGroup';
+import {CreateGroupDialog} from '../groupsComponents/allGroupsComponent/allGroups.component';
 
 @Component({
 	selector: 'director',
@@ -15,7 +19,8 @@ export class DirectorComponent {
 
 	constructor(
 	  private userService: UsersService,
-    private directorService: DirectorsService) {}
+    private directorService: DirectorsService,
+    private dialog: MatDialog) {}
 
 	ngOnInit() {
 	  this.director.college = new College();
@@ -25,4 +30,26 @@ export class DirectorComponent {
       })
     })
   }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(GenerateReportDialog, {
+      hasBackdrop: true,
+      autoFocus: true});
+
+    dialogRef.afterClosed().pipe(filter(res => res !== undefined)).subscribe(result => {});
+  }
+}
+
+@Component({
+  selector: 'generate-report-dialog',
+  templateUrl: 'generate-report-dialog.html',
+})
+export class GenerateReportDialog {
+
+  subGroups: SubGroup[];
+
+  constructor(
+    public dialogRef: MatDialogRef<CreateGroupDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
 }

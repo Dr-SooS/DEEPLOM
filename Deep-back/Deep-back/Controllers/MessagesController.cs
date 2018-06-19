@@ -110,14 +110,16 @@ namespace DEEPLOM.Controllers
 
 			if (reciever == null)
 			{
-				reciever = _context.Recievers.Add(new Reciever() {UserRecieverId = userReciever.Id}).Entity;
+				_context.Recievers.Add(new Reciever() {UserRecieverId = userReciever.Id});
 				await _context.SaveChangesAsync();
+				reciever = await _context.Recievers.FirstOrDefaultAsync(r => r.UserRecieverId == userReciever.Id);
 			}
 
 			_context.Messages.Add(new Message()
 			{
 				Text         = messageDto.Text,
 				Topic        = messageDto.Topic,
+				Date         = DateTime.Parse(messageDto.Date),
 				Reciever     = reciever,
 				UserSenderId = messageDto.UserSender.Id
 			});

@@ -1,11 +1,14 @@
 <div>
-	<div>
-		<mat-toolbar class="mat-elevation-z5" color='primary'>
-        <button *ngIf="teacher.group" mat-button [routerLink]="['groups/edit', teacher.group.id]">Кураторская группа</button>
-		</mat-toolbar>
+  <div>
+    <mat-toolbar class="mat-elevation-z5" color='primary'>
+      <button *ngIf="teacher.group" mat-button [routerLink]="['groups/edit', teacher.group.id]">Кураторская группа
+      </button>
+
+      <button mat-button [routerLink]="['messages']">Сообщения</button>
+    </mat-toolbar>
 
     <div>
-			<router-outlet></router-outlet>
-		</div>
-	</div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
