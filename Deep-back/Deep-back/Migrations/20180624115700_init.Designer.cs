@@ -11,7 +11,7 @@ using System;
 namespace Deepback.Migrations
 {
     [DbContext(typeof(CollegeDbContext))]
-    [Migration("20180531150619_init")]
+    [Migration("20180624115700_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

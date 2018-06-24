@@ -11,32 +11,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Semester.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Deep-back/Models/Semester.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="17" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="1" />
-              <folding>
-                <marker date="1526926282494" expanded="false" signature="6:47" ph="..." />
-                <marker date="1526926282494" expanded="true" signature="73:413" ph="{...}" />
-                <marker date="1526926282494" expanded="true" signature="98:411" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Specialty.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Deep-back/Models/Specialty.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
-              <folding>
-                <marker date="1526288905270" expanded="true" signature="85:295" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Student.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Deep-back/Models/Student.cs">
           <provider selected="true" editor-type-id="text-editor">
@@ -113,7 +87,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="College.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="College.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Deep-back/Models/College.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
@@ -122,6 +96,53 @@
                 <marker date="1526732598682" expanded="false" signature="6:102" ph="..." />
                 <marker date="1526732598682" expanded="true" signature="128:434" ph="{...}" />
                 <marker date="1526732598682" expanded="true" signature="152:432" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SeederController.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-506">
+              <caret line="107" column="92" lean-forward="false" selection-start-line="107" selection-start-column="92" selection-end-line="107" selection-end-column="92" />
+              <folding>
+                <marker date="1529843778237" expanded="false" signature="6:320" ph="..." />
+                <marker date="1529843778237" expanded="true" signature="351:7112" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="452:7110" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="957:1130" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="1178:7107" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="1565:6983" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="4791:4932" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="5606:5764" ph="{...}" />
+                <marker date="1529843778237" expanded="true" signature="6996:7030" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountsController.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/AccountsController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="57" column="63" lean-forward="false" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+              <folding>
+                <marker date="1526736724376" expanded="false" signature="6:488" ph="..." />
+                <marker date="1526736724376" expanded="true" signature="519:4464" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="642:4205" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="1209:1429" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="1548:1604" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="1688:2142" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="1926:2131" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="2230:2657" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="2385:2577" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="2750:3240" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="2805:2896" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="3011:3168" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="3318:4199" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="3447:3612" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="4233:4333" ph="{...}" />
+                <marker date="1526736724376" expanded="true" signature="4363:4462" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -217,7 +238,6 @@
         <option value="$PROJECT_DIR$/Deep-back/Models/DTO/MarkDTO.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Models/Lesson.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Controllers/DirectorsController.cs" />
-        <option value="$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Controllers/SubGroupsController.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Controllers/SubjectsController.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Models/DTO/TsiDto.cs" />
@@ -235,6 +255,7 @@
         <option value="$PROJECT_DIR$/Deep-back/Models/DTO/MessageDTO.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Controllers/MessagesController.cs" />
         <option value="$PROJECT_DIR$/Deep-back/Models/College.cs" />
+        <option value="$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs" />
       </list>
     </option>
   </component>
@@ -282,6 +303,12 @@
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="Deep-back (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="Deep-back" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Deep-back (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Deep-back" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Controllers" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
           </expand>
           <select />
@@ -352,11 +379,12 @@
       <workItem from="1527848899475" duration="5346000" />
       <workItem from="1528231786860" duration="992000" />
       <workItem from="1529402580190" duration="618000" />
+      <workItem from="1529840108557" duration="3658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91393000" />
+    <option name="totallyTimeSpent" value="95051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -373,11 +401,11 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943678" sideWeight="0.5018888" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32943678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943678" sideWeight="0.49811116" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20345385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -385,7 +413,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995749" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3995749" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -403,7 +431,22 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs</url>
+          <line>113</line>
+          <properties documentPath="$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs" initialLine="117">
+            <startOffsets>
+              <startOffset value="4734" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="4941" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -514,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/AccountsController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="102" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="139" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/CollegeGroupsController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -567,13 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="59" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="115" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="87" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="122" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -695,7 +724,6 @@
           <caret line="17" column="1" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="1" />
           <folding>
             <marker date="1526926282494" expanded="false" signature="6:47" ph="..." />
-            <marker date="1526926282494" expanded="true" signature="73:413" ph="{...}" />
             <marker date="1526926282494" expanded="true" signature="98:411" ph="{...}" />
           </folding>
         </state>
@@ -794,6 +822,49 @@
             <marker date="1526732598682" expanded="false" signature="6:102" ph="..." />
             <marker date="1526732598682" expanded="true" signature="128:434" ph="{...}" />
             <marker date="1526732598682" expanded="true" signature="152:432" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/AccountsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="57" column="63" lean-forward="false" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+          <folding>
+            <marker date="1526736724376" expanded="false" signature="6:488" ph="..." />
+            <marker date="1526736724376" expanded="true" signature="519:4464" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="642:4205" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="1209:1429" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="1548:1604" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="1688:2142" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="1926:2131" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="2230:2657" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="2385:2577" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="2750:3240" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="2805:2896" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="3011:3168" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="3318:4199" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="3447:3612" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="4233:4333" ph="{...}" />
+            <marker date="1526736724376" expanded="true" signature="4363:4462" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Deep-back/Controllers/SeederController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="107" column="92" lean-forward="false" selection-start-line="107" selection-start-column="92" selection-end-line="107" selection-end-column="92" />
+          <folding>
+            <marker date="1529843778237" expanded="false" signature="6:320" ph="..." />
+            <marker date="1529843778237" expanded="true" signature="351:7112" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="452:7110" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="957:1130" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="1178:7107" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="1565:6983" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="4791:4932" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="5606:5764" ph="{...}" />
+            <marker date="1529843778237" expanded="true" signature="6996:7030" ph="{...}" />
           </folding>
         </state>
       </provider>

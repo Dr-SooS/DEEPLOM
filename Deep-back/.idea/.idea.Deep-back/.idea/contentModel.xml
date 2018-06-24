@@ -26,8 +26,8 @@
         </e>
         <e p="Deep-back.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20180531150619_init.Designer.cs" t="Include" />
-          <e p="20180531150619_init.cs" t="Include" />
+          <e p="20180624115700_init.Designer.cs" t="Include" />
+          <e p="20180624115700_init.cs" t="Include" />
           <e p="CollegeDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
